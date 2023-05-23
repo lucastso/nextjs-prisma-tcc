@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import appLogo from '../../assets/logo.svg'
 import Link from 'next/link'
-import { ShoppingCart, Search, Menu } from 'lucide-react'
+import { ShoppingCart, Search, Menu, StarIcon } from 'lucide-react'
 
 const Navbar = () => {
   return (
@@ -37,8 +37,12 @@ const Navbar = () => {
             <Link href="/products" className="font-semibold">
               Produtos
             </Link>
-            <Link href="/products/new" className="font-semibold">
-              Novos
+            <Link
+              href="/products/new"
+              className="flex items-center gap-1 font-semibold"
+            >
+              <span>Novos</span>
+              <StarIcon size={16} color="#060606" fill="#ffff00" />
             </Link>
           </div>
         </div>

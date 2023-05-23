@@ -17,13 +17,13 @@ const Footer = () => {
           </div>
           <div className="flex items-start gap-24 text-zinc-900">
             <div className="flex flex-col gap-4">
-              <strong>LOJA</strong>
+              <strong>Loja</strong>
               <div className="flex flex-col gap-2 text-zinc-400">
                 <Link href="/">Home</Link>
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <strong>SUPORTE</strong>
+              <strong>Suporte</strong>
               <div className="flex flex-col gap-2 text-zinc-400">
                 <Link href="tel:15981289156">15-98128-9156</Link>
                 <Link href="/terms">Termos de uso</Link>
@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col gap-4 xs:items-start lg:items-end">
-            <strong className="text-zinc-900">MÉTODOS DE PAGAMENTO</strong>
+            <strong className="text-zinc-900">Métodos de pagamento</strong>
             <Image
               src="https://vinomundi.com.br/wp-content/uploads/2022/02/bandeira-de-cartoes-11.webp"
               alt="Payment methods"
