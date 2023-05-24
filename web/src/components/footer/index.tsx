@@ -7,7 +7,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer className={`w-screen ${fontOutfit.className}`}>
-      <div className="mt-24 bg-zinc-50 text-sm text-white">
+      <div className="mt-24 bg-zinc-100 text-sm text-white">
         <div className="mx-auto flex w-4/6 items-start justify-between py-12 xs:flex-col xs:gap-12 lg:flex-row lg:gap-0">
           <div className="flex flex-col items-start gap-4 text-zinc-400">
             <Link href="/">
@@ -43,7 +43,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mx-auto w-4/6 border-t border-zinc-300 bg-white py-4 text-center text-xs text-zinc-400">
+      <div className="mx-auto w-4/6 border-t border-zinc-200 bg-white py-4 text-center text-xs text-zinc-400">
         <span>Copyright &copy; Woogon. Todos os direitos reservados.</span>
       </div>
     </footer>
