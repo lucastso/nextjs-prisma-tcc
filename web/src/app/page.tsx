@@ -1,3 +1,5 @@
+import Product from '@/components/product'
+
 export default function Home() {
   return (
     <div className="font-outfit mx-auto overflow-x-hidden xs:w-full lg:w-4/6">
@@ -11,6 +13,19 @@ export default function Home() {
             Comprar agora
           </button>
         </div>
+      </section>
+
+      <section className="mt-8 flex w-full items-center justify-between">
+        <div className="flex items-center gap-4">flex</div>
+
+        <div>box</div>
+      </section>
+
+      <section className="grid grid-cols-4 gap-8">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
       </section>
     </div>
   )
