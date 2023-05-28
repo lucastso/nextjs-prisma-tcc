@@ -13,13 +13,16 @@ const Footer = () => {
             <Link href="/">
               <Image src={appLogo} alt="Paracord" className="w-24" />
             </Link>
-            <span>A Paracord é um e-commerce.</span>
+            <span>A Paracord é um e-commerce de pesca.</span>
           </div>
           <div className="flex items-start gap-24 text-zinc-900">
             <div className="flex flex-col gap-4">
               <strong>Loja</strong>
               <div className="flex flex-col gap-2 text-zinc-400">
                 <Link href="/">Home</Link>
+                <Link href="/products">Produtos</Link>
+                <Link href="/categories">Categorias</Link>
+                <Link href="/products/new">Novos</Link>
               </div>
             </div>
             <div className="flex flex-col gap-4">

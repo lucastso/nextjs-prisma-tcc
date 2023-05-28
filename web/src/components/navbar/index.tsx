@@ -12,10 +12,10 @@ const Navbar = () => {
             <a href="#" className="underline">
               Inscreva-se
             </a>{' '}
-            para receber o nosso e-book.
+            no nosso e-Fishingbook.
           </div>
 
-          <Link href="/cart" className="flex items-center justify-center gap-4">
+          <Link href="/cart" className="flex items-center justify-center gap-2">
             <ShoppingCart size={16} />
             <span>
               R$ <strong>0</strong>

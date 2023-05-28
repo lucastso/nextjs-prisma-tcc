@@ -1,22 +1,24 @@
 import ProductComponent from '@/components/product'
-import { ProductProps } from '@/types/product_props'
 import { api } from '@/lib/axios'
+import { ProductProps } from '@/types/product_props'
 
-export default async function Home() {
+export default async function NewProducts() {
   const response = await api.get('/products')
   const products: ProductProps[] = response.data
 
   return (
     <div className="font-outfit mx-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
-      <section className="relative flex h-[40vh] items-center justify-center overflow-hidden rounded-md bg-hero bg-cover bg-center bg-no-repeat">
-        <div className="absolute bottom-12 left-12 flex flex-col items-start gap-4">
-          <span className="w-2/3 text-2xl font-semibold text-white">
-            Tenha até 50% de desconto em produtos especiais!
+      <section className="relative flex h-[40vh] items-center justify-center overflow-hidden rounded-md bg-hero-new bg-cover bg-center bg-no-repeat">
+        <div className="absolute bottom-12 left-12 flex w-2/4 flex-col items-start gap-4 text-white">
+          <span className="text-2xl font-semibold ">
+            Tenha acesso aos novos produtos!
           </span>
-
-          <button className="rounded-full bg-orange-400 px-4 py-2 font-semibold text-zinc-900">
-            Comprar agora
-          </button>
+          <span>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet enim
+            excepturi ad facere, impedit dolorem. Debitis aliquid at in animi
+            dolore voluptates nam consequuntur et. Repellat adipisci impedit
+            optio. Recusandae.
+          </span>
         </div>
       </section>
 
