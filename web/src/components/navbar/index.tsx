@@ -31,9 +31,6 @@ const Navbar = () => {
           </Link>
 
           <div className="items-center gap-12 xs:hidden lg:flex">
-            <Link href="/products/categories" className="font-semibold">
-              Categorias
-            </Link>
             <Link href="/products" className="font-semibold">
               Produtos
             </Link>
@@ -43,6 +40,9 @@ const Navbar = () => {
             >
               <span>Novos</span>
               <StarIcon size={16} color="#060606" fill="#ffff00" />
+            </Link>
+            <Link href="/products/categories" className="font-semibold">
+              Categorias
             </Link>
           </div>
         </div>

@@ -1,17 +1,14 @@
-import ProductComponent from '@/components/product'
-import { ProductProps } from '@/types/product_props'
-import { api } from '@/lib/axios'
-
-export default async function Home() {
-  const response = await api.get('/products')
-  const products: ProductProps[] = response.data
-
+export default function Home() {
   return (
-    <div className="font-outfit mx-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
-      <section className="relative flex h-[40vh] items-center justify-center overflow-hidden rounded-md bg-hero bg-cover bg-center bg-no-repeat">
+    <div className="font-outfit mx-auto space-y-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
+      <section className="relative flex h-[40vh] items-center justify-center overflow-hidden rounded-md bg-hero-home bg-cover bg-center bg-no-repeat">
         <div className="absolute bottom-12 left-12 flex flex-col items-start gap-4">
-          <span className="w-2/3 text-2xl font-semibold text-white">
-            Tenha até 50% de desconto em produtos especiais!
+          <h1 className="w-2/3 text-3xl font-semibold text-orange-400">
+            Paracord, o melhor em caça e pesca.
+          </h1>
+
+          <span className="w-2/3 text-white">
+            Tenha acesso ao catalogo para garantir produtos exclusivos!
           </span>
 
           <button className="rounded-full bg-orange-400 px-4 py-2 font-semibold text-zinc-900">
@@ -20,27 +17,11 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* <section className="mt-8 flex w-full items-center justify-between">
-        <div className="flex items-center gap-4">flex</div>
-
-        <div>box</div>
-      </section> */}
-
-      <section className="mt-4 grid grid-cols-4 gap-8">
-        {products.map((product) => {
-          return (
-            <ProductComponent
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              category={product.category}
-              description={product.description}
-              price={product.price}
-              image={product.image}
-              createdAt={product.createdAt}
-            />
-          )
-        })}
+      <section className="grid grid-cols-4 gap-4">
+        <div className="col-span-1 h-56 rounded-md bg-black">a</div>
+        <div className="col-span-1 h-56 rounded-md bg-black">a</div>
+        <div className="col-span-1 h-56 rounded-md bg-black">a</div>
+        <div className="col-span-1 h-56 rounded-md bg-black">a</div>
       </section>
     </div>
   )
