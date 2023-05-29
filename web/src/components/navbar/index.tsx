@@ -12,7 +12,7 @@ const Navbar = () => {
             <a href="#" className="underline">
               Inscreva-se
             </a>{' '}
-            no nosso e-Fishingbook.
+            em nossa newsletter.
           </div>
 
           <Link href="/cart" className="flex items-center justify-center gap-2">
@@ -39,7 +39,7 @@ const Navbar = () => {
               className="flex items-center gap-1 font-semibold"
             >
               <span>Novos</span>
-              <StarIcon size={16} color="#060606" fill="#ffff00" />
+              <StarIcon size={12} color="#060606" fill="#ffff00" />
             </Link>
             <Link href="/products/categories" className="font-semibold">
               Categorias

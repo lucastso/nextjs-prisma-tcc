@@ -24,7 +24,7 @@ const ProductComponent = ({
           height={256}
           className="aspect-video object-contain"
         />
-        <span className="absolute left-2 top-2 rounded-full bg-orange-200/75 px-3 font-semibold text-orange-500">
+        <span className="absolute left-2 top-2 rounded-full bg-fuchsia-200/75 px-3 font-semibold text-fuchsia-500">
           {category}
         </span>
       </div>
