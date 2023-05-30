@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'https://paracord-tcc-server.vercel.app',
+  baseURL: 'https://127.0.0.1:3333',
 })
