@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import appLogo from '../../assets/logo.svg'
 import Link from 'next/link'
-import { ShoppingCart, Search, Menu, StarIcon } from 'lucide-react'
+import { ShoppingCart, Menu, StarIcon } from 'lucide-react'
+import NavbarSearch from '../navbar_search'
 
 const Navbar = () => {
   return (
@@ -48,19 +49,7 @@ const Navbar = () => {
         </div>
 
         <div className="items-center justify-center xs:hidden lg:flex">
-          <div className="relative flex h-10 w-56 items-center rounded-full bg-zinc-100">
-            <input
-              type="text"
-              className="absolute left-0 w-full bg-transparent pl-4 pr-12 focus:outline-none"
-              placeholder="Pesquisar..."
-            />
-            <Link
-              href="/products"
-              className="absolute right-0 flex h-10 w-10 items-center justify-center text-sm font-bold"
-            >
-              <Search size={16} />
-            </Link>
-          </div>
+          <NavbarSearch />
         </div>
 
         <Menu className="cursor-pointer xs:block lg:hidden" />

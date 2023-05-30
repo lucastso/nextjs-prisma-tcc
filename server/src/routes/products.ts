@@ -13,6 +13,30 @@ export const productsRoutes = async (app: FastifyInstance) => {
     return products
   })
 
+  app.get('/products/search', async (request) => {
+    const querySchema = z.object({
+      q: z.string(),
+    })
+    const { q } = querySchema.parse(request.query)
+
+    const products = await prisma.product.findMany({
+      where: {
+        OR: [
+          {
+            title: {
+              contains: q,
+            },
+          },
+        ],
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
+
+    return products
+  })
+
   app.get('/products/:id', async (request) => {
     const paramsSchema = z.object({
       id: z.string().uuid(),
@@ -34,15 +58,21 @@ export const productsRoutes = async (app: FastifyInstance) => {
       title: z.string(),
       description: z.string(),
       price: z.number(),
+      image: z.string(),
+      category: z.string(),
     })
 
-    const { title, description, price } = bodySchema.parse(request.body)
+    const { title, description, price, image, category } = bodySchema.parse(
+      request.body,
+    )
 
     const products = prisma.product.create({
       data: {
         title,
         description,
         price,
+        image,
+        category,
       },
     })
 
