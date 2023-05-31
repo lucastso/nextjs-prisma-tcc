@@ -39,7 +39,7 @@ const Navbar = () => {
               href="/products/new"
               className="flex items-center gap-1 font-semibold"
             >
-              <span>Novos</span>
+              <span>Lançamentos</span>
               <StarIcon size={12} color="#060606" fill="#ffff00" />
             </Link>
             <Link href="/products/categories" className="font-semibold">

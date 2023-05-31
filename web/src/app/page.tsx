@@ -1,7 +1,12 @@
 import CategoriesComponent from '@/components/categories'
 import DealsComponent from '@/components/deals'
+import { api } from '@/lib/axios'
+import { ProductProps } from '@/types/product_props'
 
-export default function Home() {
+export default async function Home() {
+  const response = await api.get('/products')
+  const products: ProductProps[] = response.data
+
   return (
     <div className="font-outfit mx-auto space-y-16 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
       <section className="relative flex h-[40vh] items-center justify-center overflow-hidden rounded-md bg-hero bg-cover bg-center bg-no-repeat">
@@ -20,9 +25,9 @@ export default function Home() {
         </div>
       </section>
 
-      <CategoriesComponent />
+      <DealsComponent products={products} />
 
-      <DealsComponent />
+      <CategoriesComponent />
 
       <section className="items-right justify-right relative flex h-[40vh] overflow-hidden rounded-md bg-second-hero-home bg-cover bg-center bg-no-repeat">
         <div className="absolute right-12 top-12 flex w-1/3 flex-col items-end gap-4">
