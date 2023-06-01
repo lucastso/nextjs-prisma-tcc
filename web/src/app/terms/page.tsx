@@ -1,6 +1,6 @@
 export default function Terms() {
   return (
-    <div className="font-outfit mx-auto mt-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
+    <div className="font-outfit mx-auto mb-auto mt-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
       Bem-vindo ao nosso e-commerce. Leia atentamente estes termos de uso antes
       de utilizar nosso site. Ao acessar ou utilizar nosso e-commerce, você
       concorda em cumprir e ficar vinculado a estes termos. Se você não

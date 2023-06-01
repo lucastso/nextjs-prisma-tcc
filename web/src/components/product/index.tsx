@@ -39,8 +39,8 @@ const ProductComponent = ({
 
         <div className="space-y-2">
           <span>
-            {description.length > 15
-              ? description.slice(0, 40).concat('...')
+            {description.length > 16
+              ? description.slice(0, 44).concat('...')
               : description}
           </span>
           <div className="flex items-center gap-2">

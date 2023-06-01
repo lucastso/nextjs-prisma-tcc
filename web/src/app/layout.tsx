@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${fontOutfit.className} text-zinc-900 selection:bg-fuchsia-950 selection:text-fuchsia-400`}
       >
-        <main className="flex min-h-screen flex-col overflow-x-hidden">
+        <main className="flex min-h-screen flex-col justify-between overflow-x-hidden">
           <Navbar />
           {children}
           <Footer />

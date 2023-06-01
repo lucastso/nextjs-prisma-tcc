@@ -22,9 +22,15 @@ const DealsComponent = ({ products }: ProductPropsList) => {
           >
             <div className="col-span-1 flex flex-col justify-between px-4 py-3">
               <div className="flex flex-col gap-2">
-                <span className="font-semibold">{product.title}</span>
+                <span className="text-lg font-semibold">
+                  {product.title.length > 20
+                    ? product.title.slice(0, 20).concat('...')
+                    : product.title}
+                </span>
                 <span className="text-sm">
-                  {product.description.slice(0, 24).concat('...')}
+                  {product.description.length > 24
+                    ? product.description.slice(0, 24).concat('...')
+                    : product.description}
                 </span>
               </div>
               <span className="whitespace-nowrap">

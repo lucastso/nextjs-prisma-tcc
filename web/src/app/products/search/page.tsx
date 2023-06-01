@@ -13,8 +13,8 @@ export default async function SearchPage({ searchParams: { q } }: Params) {
   const products: ProductProps[] = response.data
 
   return (
-    <div className="font-outfit mx-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
-      <section className="mt-4 grid grid-cols-4 gap-8">
+    <div className="font-outfit mx-auto mb-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
+      <section className="mt-8 grid grid-cols-4 gap-8">
         {products.length === 0 ? (
           <div>
             <span>
