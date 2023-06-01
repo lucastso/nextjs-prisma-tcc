@@ -8,7 +8,7 @@ export default async function Home() {
   const products: ProductProps[] = response.data
 
   return (
-    <div className="font-outfit mx-auto space-y-16 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
+    <div className="font-outfit mx-auto mt-8 space-y-16 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
       <section className="relative flex h-[40vh] items-center justify-center overflow-hidden rounded-md bg-hero bg-cover bg-center bg-no-repeat">
         <div className="absolute bottom-12 left-12 flex flex-col items-start gap-4">
           <h1 className="w-2/3 text-3xl font-semibold text-fuchsia-400">
