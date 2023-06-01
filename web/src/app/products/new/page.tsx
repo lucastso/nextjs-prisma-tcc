@@ -7,7 +7,7 @@ export default async function NewProducts() {
   const products: ProductProps[] = response.data
 
   return (
-    <div className="font-outfit mx-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
+    <div className="font-outfit mx-auto mt-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
       <section className="relative flex h-[40vh] items-center justify-center overflow-hidden rounded-md bg-hero-new bg-cover bg-center bg-no-repeat">
         <div className="absolute bottom-12 left-12 flex w-2/4 flex-col items-start gap-4 text-white">
           <span className="text-3xl font-semibold ">
