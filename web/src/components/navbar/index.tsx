@@ -42,9 +42,6 @@ const Navbar = () => {
               <span>Lançamentos</span>
               <StarIcon size={16} />
             </Link>
-            <Link href="/products/categories" className="font-semibold">
-              Categorias
-            </Link>
           </div>
         </div>
 
