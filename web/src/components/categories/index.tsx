@@ -53,7 +53,7 @@ const CategoriesComponent = () => {
               alt={item.category}
               width={512}
               height={256}
-              className="h-full w-full rounded-md object-cover transition-all group-hover:scale-105"
+              className="h-full w-full rounded-md object-cover"
             />
             <span className="absolute top-4 text-3xl font-semibold text-white">
               {item.category}

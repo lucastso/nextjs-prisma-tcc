@@ -40,7 +40,7 @@ const Navbar = () => {
               className="flex items-center gap-1 font-semibold"
             >
               <span>Lançamentos</span>
-              <StarIcon size={12} color="#060606" fill="#ffff00" />
+              <StarIcon size={16} />
             </Link>
             <Link href="/products/categories" className="font-semibold">
               Categorias
