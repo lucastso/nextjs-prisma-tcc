@@ -12,7 +12,7 @@ const NavbarSearch = () => {
     event.preventDefault()
 
     const encodedSearchQuery = encodeURI(searchQuery)
-    router.push(`/products/search?q=${encodedSearchQuery}`)
+    router.push(`/products?q=${encodedSearchQuery}`)
   }
 
   return (

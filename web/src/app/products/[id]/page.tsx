@@ -16,6 +16,10 @@ export default async function Product({ params: { id } }: Params) {
   const responseAllProducts = await api.get('/products')
   const products: ProductProps[] = responseAllProducts.data
 
+  const formatToPrice = (number: number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
+
   return (
     <div className="font-outfit mx-auto mb-auto mt-8 space-y-12 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
       <div className="grid w-full grid-cols-6">
@@ -42,7 +46,10 @@ export default async function Product({ params: { id } }: Params) {
 
           <div className="space-y-4">
             <p className="whitespace-nowrap">
-              R$ <strong className="text-2xl">{product.price}</strong>
+              R${' '}
+              <strong className="text-2xl">
+                {formatToPrice(product.price)}
+              </strong>
             </p>
             <button className="w-full rounded-full bg-zinc-900 py-3 text-lg font-semibold text-white">
               Comprar agora

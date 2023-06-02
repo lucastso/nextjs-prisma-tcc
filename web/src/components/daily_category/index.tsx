@@ -38,6 +38,7 @@ const DailyCategory = ({ products }: ProductPropsList) => {
       <div className="col-span-4 grid grid-cols-4 gap-8">
         {products
           .filter((element) => element.category === item)
+          .slice(0, 4)
           .map((product) => {
             return (
               <ProductComponent

@@ -1,5 +1,4 @@
 import { ProductProps } from '@/types/product_props'
-import { Star } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -11,6 +10,10 @@ const ProductComponent = ({
   image,
   category,
 }: ProductProps) => {
+  const formatToPrice = (number: number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
+
   return (
     <Link
       className="col-span-1 flex w-full cursor-pointer flex-col gap-4"
@@ -33,7 +36,7 @@ const ProductComponent = ({
         <div className="flex w-full items-start justify-between gap-2">
           <span className="text-lg font-semibold">{title}</span>
           <span className="whitespace-nowrap">
-            R$ <strong className="text-lg">{price}</strong>
+            R$ <strong className="text-lg">{formatToPrice(price)}</strong>
           </span>
         </div>
 
@@ -43,16 +46,6 @@ const ProductComponent = ({
               ? description.slice(0, 44).concat('...')
               : description}
           </span>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center">
-              <Star size={16} fill="#808080" stroke="#808080" />
-              <Star size={16} fill="#808080" stroke="#808080" />
-              <Star size={16} fill="#808080" stroke="#808080" />
-              <Star size={16} fill="#808080" stroke="#808080" />
-              <Star size={16} stroke="#808080" />
-            </div>
-            <span>4</span>
-          </div>
         </div>
       </div>
     </Link>

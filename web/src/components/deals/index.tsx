@@ -8,6 +8,10 @@ type ProductPropsList = {
 }
 
 const DealsComponent = ({ products }: ProductPropsList) => {
+  const formatToPrice = (number: number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
+
   return (
     <section className="grid grid-cols-4 gap-4">
       <span className="col-span-4 mb-4 flex items-center gap-1 text-xl font-semibold">
@@ -34,7 +38,10 @@ const DealsComponent = ({ products }: ProductPropsList) => {
                 </span>
               </div>
               <span className="whitespace-nowrap">
-                R$ <strong className="text-lg">{product.price}</strong>
+                R${' '}
+                <strong className="text-lg">
+                  {formatToPrice(product.price)}
+                </strong>
               </span>
             </div>
             <div className="relative col-span-1">

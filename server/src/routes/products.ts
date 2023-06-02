@@ -27,6 +27,11 @@ export const productsRoutes = async (app: FastifyInstance) => {
               contains: q,
             },
           },
+          {
+            category: {
+              contains: q,
+            },
+          },
         ],
       },
       orderBy: {

@@ -44,7 +44,7 @@ const CategoriesComponent = () => {
       {categories.map((item) => {
         return (
           <Link
-            href="/"
+            href={`/products?q=${item.category}`}
             className="group relative col-span-1 flex h-56 items-center justify-center overflow-hidden"
             key={item.id}
           >
