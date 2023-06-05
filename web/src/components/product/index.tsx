@@ -15,11 +15,12 @@ const ProductComponent = ({
   }
 
   return (
-    <Link
-      className="col-span-1 flex w-full cursor-pointer flex-col gap-4"
-      href={`/products/${id}`}
-    >
-      <div className="relative aspect-video overflow-hidden">
+    <div className="col-span-1 flex w-full flex-col gap-4">
+      <Link
+        className="relative aspect-video overflow-hidden"
+        href={`/products/${id}`}
+        title={title}
+      >
         <Image
           src={image}
           alt=""
@@ -30,25 +31,29 @@ const ProductComponent = ({
         <span className="absolute left-2 top-2 rounded-full bg-fuchsia-200/75 px-3 font-semibold text-fuchsia-500">
           {category}
         </span>
-      </div>
+      </Link>
 
       <div className="flex flex-col items-start">
         <div className="flex w-full items-start justify-between gap-2">
-          <span className="text-lg font-semibold">{title}</span>
+          <Link
+            href={`/products/${id}`}
+            className="text-lg font-semibold"
+            title={title}
+          >
+            {title}
+          </Link>
           <span className="whitespace-nowrap">
             R$ <strong className="text-lg">{formatToPrice(price)}</strong>
           </span>
         </div>
 
-        <div className="space-y-2">
-          <span>
-            {description.length > 16
-              ? description.slice(0, 44).concat('...')
-              : description}
-          </span>
-        </div>
+        <span>
+          {description.length > 16
+            ? description.slice(0, 44).concat('...')
+            : description}
+        </span>
       </div>
-    </Link>
+    </div>
   )
 }
 

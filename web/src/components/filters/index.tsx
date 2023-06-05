@@ -11,10 +11,8 @@ const Filters = () => {
   const handleCategorySelectChange = (
     event: ChangeEvent<HTMLSelectElement>,
   ) => {
-    if (event.target.value !== 'Todos') {
-      setCategorySelectValue(event.target.value)
-      console.log(categorySelectValue)
-
+    if (event.currentTarget.value !== 'Todos') {
+      setCategorySelectValue(event.currentTarget.value)
       router.push(`/products?q=${categorySelectValue}`)
     } else {
       router.push('/products')
@@ -24,10 +22,11 @@ const Filters = () => {
   return (
     <div className="col-span-4 mt-8 flex w-full items-center justify-between">
       <select
+        defaultValue={categorySelectValue}
         name="category"
         id="category"
         className="h-10 rounded-full bg-zinc-100 px-4 text-zinc-500 focus:outline-1 focus:outline-zinc-300"
-        onChange={handleCategorySelectChange}
+        onChange={(event) => handleCategorySelectChange(event)}
       >
         <option value="Todos">Todas as categorias</option>
         <option value="GPU">GPUs</option>

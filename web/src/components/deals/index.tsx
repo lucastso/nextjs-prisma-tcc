@@ -21,7 +21,7 @@ const DealsComponent = ({ products }: ProductPropsList) => {
         return (
           <Link
             href={`/products/${product.id}`}
-            className="col-span-1 grid h-56 overflow-hidden rounded-md xs:grid-cols-1 lg:grid-cols-2"
+            className="col-span-1 grid h-56 overflow-hidden rounded-md border border-zinc-300 bg-zinc-100 xs:grid-cols-1 lg:grid-cols-2"
             key={product.id}
           >
             <div className="col-span-1 flex flex-col justify-between px-4 py-3">
