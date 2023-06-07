@@ -46,7 +46,7 @@ const Footer = () => {
       </div>
 
       <div className="mx-auto w-4/6 border-t border-zinc-200 bg-white py-4 text-center text-xs text-zinc-400">
-        <span>Copyright &copy; Woogon. Todos os direitos reservados.</span>
+        <span>Copyright &copy; Woogon 2023. Todos os direitos reservados.</span>
       </div>
     </footer>
   )

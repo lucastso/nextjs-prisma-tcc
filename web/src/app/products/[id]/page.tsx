@@ -1,3 +1,4 @@
+import BuyButton from '@/components/buy_button'
 import SameCategoriesProducts from '@/components/same_categories_products'
 import { api } from '@/lib/axios'
 import { ProductProps } from '@/types/product_props'
@@ -51,9 +52,8 @@ export default async function Product({ params: { id } }: Params) {
                 {formatToPrice(product.price)}
               </strong>
             </p>
-            <button className="w-full rounded-full bg-zinc-900 py-3 text-lg font-semibold text-white">
-              Comprar agora
-            </button>
+
+            <BuyButton />
           </div>
         </div>
       </div>
