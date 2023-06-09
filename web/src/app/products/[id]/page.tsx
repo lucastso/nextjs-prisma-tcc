@@ -53,7 +53,7 @@ export default async function Product({ params: { id } }: Params) {
               </strong>
             </p>
 
-            <BuyButton />
+            <BuyButton product={product} />
           </div>
         </div>
       </div>

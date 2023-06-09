@@ -1,11 +1,21 @@
 'use client'
 
+import { add } from '@/redux/features/cart'
+import { ProductProps } from '@/types/product_props'
+import { useDispatch } from 'react-redux'
 import { ToastContainer, toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const BuyButton = () => {
+type ProductPropsBuy = {
+  product: ProductProps
+}
+
+const BuyButton = ({ product }: ProductPropsBuy) => {
+  const dispatch = useDispatch()
+
   const handleBuyButtonClick = () => {
     toast('Adicionado ao carrinho!')
+    dispatch(add(product))
   }
   return (
     <div>

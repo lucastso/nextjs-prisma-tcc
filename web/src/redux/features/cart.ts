@@ -1,9 +1,10 @@
 'use client'
 
+import { ProductProps } from '@/types/product_props'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface CartState {
-  cartItems: []
+  cartItems: ProductProps[]
 }
 
 const initialState: CartState = {
@@ -15,16 +16,11 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      state.cartItems = []
+      state.cartItems.push(action.payload)
     },
-    remove: (state) => {
-      state.cartItems = []
-    },
-    increment: (state, action) => {
-      state.cartItems = []
-    },
+    remove: (state, action) => {},
   },
 })
 
-export const { add, remove, increment } = cartSlice.actions
+export const { add, remove } = cartSlice.actions
 export default cartSlice.reducer

@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import appLogo from '../../assets/logo.svg'
 import Link from 'next/link'
-import { ShoppingCart, Menu, StarIcon } from 'lucide-react'
+import { Menu, StarIcon } from 'lucide-react'
 import NavbarSearch from '../navbar_search'
+import NavbarCart from '../navbar_cart'
 
 const Navbar = () => {
   return (
@@ -16,12 +17,7 @@ const Navbar = () => {
             em nossa newsletter.
           </div>
 
-          <Link href="/cart" className="flex items-center justify-center gap-2">
-            <ShoppingCart size={16} />
-            <span>
-              R$ <strong>0</strong>
-            </span>
-          </Link>
+          <NavbarCart />
         </div>
       </div>
 

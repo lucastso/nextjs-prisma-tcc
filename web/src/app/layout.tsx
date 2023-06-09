@@ -3,7 +3,7 @@ import './globals.css'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import { fontOutfit } from '@/assets/fonts'
-import { Providers } from './redux/provider'
+import { Providers } from '@/redux/provider'
 
 export const metadata = {
   title: 'Paracord',
