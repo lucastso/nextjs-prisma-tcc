@@ -5,15 +5,14 @@ import { ChangeEvent, useState } from 'react'
 
 const Filters = () => {
   const router = useRouter()
-  const [categorySelectValue, setCategorySelectValue] =
-    useState<string>('Todos')
+  const [categorySelectedValue, setCategorySelectedValue] = useState<string>('')
 
   const handleCategorySelectChange = (
     event: ChangeEvent<HTMLSelectElement>,
   ) => {
     if (event.currentTarget.value !== 'Todos') {
-      setCategorySelectValue(event.currentTarget.value)
-      router.push(`/products?q=${categorySelectValue}`)
+      setCategorySelectedValue(event.currentTarget.value)
+      router.push(`/products?q=${categorySelectedValue}`)
     } else {
       router.push('/products')
     }
@@ -22,7 +21,8 @@ const Filters = () => {
   return (
     <div className="col-span-4 mt-8 flex w-full items-center justify-between">
       <select
-        defaultValue={categorySelectValue}
+        value={categorySelectedValue}
+        defaultValue={categorySelectedValue}
         name="category"
         id="category"
         className="h-10 rounded-full bg-zinc-100 px-4 text-zinc-500 focus:outline-1 focus:outline-zinc-300"

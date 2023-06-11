@@ -15,7 +15,7 @@ const DealsComponent = ({ products }: ProductPropsList) => {
   return (
     <section className="grid grid-cols-4 gap-4">
       <span className="col-span-4 mb-4 flex items-center gap-1 text-xl font-semibold">
-        Melhores ofertas hoje <BadgePercent size={16} />
+        Produtos novos <BadgePercent size={16} />
       </span>
       {products.slice(0, 4).map((product) => {
         return (
