@@ -31,17 +31,14 @@ export default async function Home() {
       </section>
 
       <DealsComponent products={products} />
-
       <CategoriesComponent />
-
       <DailyCategory products={products} />
 
       <section className="items-right justify-right relative flex h-[40vh] overflow-hidden rounded-md bg-second-hero-home bg-cover bg-center bg-no-repeat">
         <div className="absolute right-12 top-12 flex w-1/3 flex-col items-end gap-4">
-          <h1 className="text-right text-3xl font-semibold text-white">
-            Até <span className="text-fuchsia-400">25% off</span> em compras
-            acima de R$2.000
-          </h1>
+          <p className="text-right text-3xl font-semibold text-white">
+            Aproveite os melhores preços da internet!
+          </p>
 
           <Link
             href="/products"
