@@ -16,3 +16,11 @@ model Product {
   price       Float
   createdAt   DateTime @default(now())
 }
+
+model Sold {
+  id        String   @id @default(uuid())
+  title     String
+  price     Float
+  category  String
+  createdAt DateTime @default(now())
+}
