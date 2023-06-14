@@ -17,6 +17,7 @@ const BuyButton = ({ product }: ProductPropsBuy) => {
     toast('Adicionado ao carrinho!')
     dispatch(add(product))
   }
+
   return (
     <div>
       <button
