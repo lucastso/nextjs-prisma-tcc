@@ -94,10 +94,11 @@ export const productsRoutes = async (app: FastifyInstance) => {
     const bodySchema = z.object({
       title: z.string(),
       description: z.string(),
+      image: z.string(),
       price: z.number(),
     })
 
-    const { title, description, price } = bodySchema.parse(request.body)
+    const { title, description, image, price } = bodySchema.parse(request.body)
 
     let products = await prisma.product.findUniqueOrThrow({
       where: {
@@ -112,6 +113,7 @@ export const productsRoutes = async (app: FastifyInstance) => {
       data: {
         title,
         description,
+        image,
         price,
       },
     })
