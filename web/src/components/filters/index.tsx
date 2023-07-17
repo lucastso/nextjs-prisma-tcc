@@ -1,28 +1,31 @@
-'use client'
+"use client";
 
-import { useRouter } from 'next/navigation'
-import { ChangeEvent, useState } from 'react'
+import { useRouter } from "next/navigation";
+import { ChangeEvent, useState } from "react";
 
 const Filters = () => {
-  const router = useRouter()
-  const [categorySelectedValue, setCategorySelectedValue] = useState<string>('')
+  const router = useRouter();
+  const [categorySelectedValue, setCategorySelectedValue] = useState<string>(
+    "Todas as categorias"
+  );
 
   const handleCategorySelectChange = (
-    event: ChangeEvent<HTMLSelectElement>,
+    event: ChangeEvent<HTMLSelectElement>
   ) => {
-    if (event.currentTarget.value !== 'Todos') {
-      setCategorySelectedValue(event.currentTarget.value)
-      router.push(`/products?q=${categorySelectedValue}`)
+    const selectedValue = event.currentTarget.value;
+    if (selectedValue !== "Todos") {
+      router.push(`/products?q=${selectedValue}`);
+      setCategorySelectedValue(selectedValue);
     } else {
-      router.push('/products')
+      router.push("/products");
+      setCategorySelectedValue("");
     }
-  }
+  };
 
   return (
     <div className="col-span-4 mt-8 flex w-full items-center justify-between">
       <select
         value={categorySelectedValue}
-        defaultValue={categorySelectedValue}
         name="category"
         id="category"
         className="h-10 rounded-full bg-zinc-100 px-4 text-zinc-500 focus:outline-1 focus:outline-zinc-300"
@@ -51,7 +54,7 @@ const Filters = () => {
         <option value="Z - A">Z - A</option>
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;
