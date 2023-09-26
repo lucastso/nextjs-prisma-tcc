@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import { Search } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import React, { FormEvent, useState } from 'react'
+import { Search } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React, { FormEvent, useState } from "react";
 
 const NavbarSearch = () => {
-  const [searchQuery, setSearchQuery] = useState<string>('')
-  const router = useRouter()
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const router = useRouter();
 
   const onSearch = (event: FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const encodedSearchQuery = encodeURI(searchQuery)
-    router.push(`/products?q=${encodedSearchQuery}`)
-  }
+    const encodedSearchQuery = encodeURI(searchQuery);
+    router.push(`/products?q=${encodedSearchQuery}`);
+  };
 
   return (
     <form
@@ -28,10 +28,10 @@ const NavbarSearch = () => {
         placeholder="Pesquisar..."
       />
       <div className="absolute right-0 flex h-10 w-10 items-center justify-center text-sm font-bold">
-        <Search size={16} />
+        <Search size={16} onClick={onSearch} className="cursor-pointer" />
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default NavbarSearch
+export default NavbarSearch;
