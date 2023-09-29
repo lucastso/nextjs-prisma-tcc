@@ -8,6 +8,8 @@ const Filters = () => {
   const [categorySelectedValue, setCategorySelectedValue] = useState<string>(
     "Todas as categorias"
   );
+  const [orderSelectedValue, setOrderSelectedValue] =
+    useState<string>("Relevância");
 
   const handleCategorySelectChange = (
     event: ChangeEvent<HTMLSelectElement>
@@ -19,6 +21,17 @@ const Filters = () => {
     } else {
       router.push("/products");
       setCategorySelectedValue("");
+    }
+  };
+
+  const handleOrderSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.currentTarget.value;
+    if (selectedValue !== "Relevância") {
+      router.push(`/products?o=${selectedValue}`);
+      setOrderSelectedValue(selectedValue);
+    } else {
+      router.push("/products");
+      setOrderSelectedValue("");
     }
   };
 
@@ -43,15 +56,15 @@ const Filters = () => {
       </select>
 
       <select
-        name="category"
-        id="category"
+        value={orderSelectedValue}
+        name="order"
+        id="order"
         className="h-10 rounded-full bg-zinc-100 px-4 text-zinc-500 focus:outline-1 focus:outline-zinc-300"
+        onChange={(event) => handleOrderSelectChange(event)}
       >
         <option value="Relevância">Relevância</option>
-        <option value="Maior preço">Maior preço</option>
-        <option value="Menor preço">Menor preço</option>
-        <option value="A - Z">A - Z</option>
-        <option value="Z - A">Z - A</option>
+        <option value="desc">Maior preço</option>
+        <option value="asc">Menor preço</option>
       </select>
     </div>
   );
