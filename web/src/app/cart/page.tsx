@@ -1,22 +1,32 @@
-'use client'
+"use client";
 
-import CartBuyButton from '@/components/cart_buy_button'
-import { RootState } from '@/redux/store'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useSelector } from 'react-redux'
+import CartBuyButton from "@/components/cart_buy_button";
+import { remove } from "@/redux/features/cart";
+import { RootState } from "@/redux/store";
+import Image from "next/image";
+import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Cart() {
-  const products = useSelector((state: RootState) => state.cart.cartItems)
+  const dispatch = useDispatch();
 
-  let totalPrice = 0
+  const handleRemoveButtonClick = (id: string) => {
+    toast("Item removido do carrinho!");
+    dispatch(remove(id));
+  };
+
+  const products = useSelector((state: RootState) => state.cartItems);
+
+  let totalPrice = 0;
   products.forEach((item) => {
-    totalPrice += item.price
-  })
+    totalPrice += item.price;
+  });
 
   const formatToPrice = (number: number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-  }
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 
   return (
     <div className="mx-auto mb-auto mt-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
@@ -57,16 +67,25 @@ export default function Cart() {
                       <span className="w-fit rounded-full bg-fuchsia-200 px-3 text-sm font-semibold text-fuchsia-500">
                         {product.category}
                       </span>
-                      <p className="whitespace-nowrap">
-                        R${' '}
-                        <strong className="text-2xl">
-                          {formatToPrice(product.price)}
-                        </strong>
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <p className="whitespace-nowrap">
+                          R${" "}
+                          <strong className="text-2xl">
+                            {formatToPrice(product.price)}
+                          </strong>
+                        </p>
+
+                        <button
+                          className="w-fit rounded-full bg-red-500 px-6 py-3 font-semibold text-white"
+                          onClick={() => handleRemoveButtonClick(product.id)}
+                        >
+                          Remover
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
 
@@ -76,7 +95,7 @@ export default function Cart() {
             <span>{products.length} produto(s)</span>
 
             <p className="whitespace-nowrap">
-              R${' '}
+              R${" "}
               <strong className="text-2xl">{formatToPrice(totalPrice)}</strong>
             </p>
 
@@ -85,5 +104,5 @@ export default function Cart() {
         </div>
       )}
     </div>
-  )
+  );
 }

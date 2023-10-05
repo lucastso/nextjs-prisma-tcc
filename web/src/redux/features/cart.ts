@@ -1,26 +1,28 @@
-'use client'
+"use client";
 
-import { ProductProps } from '@/types/product_props'
-import { createSlice } from '@reduxjs/toolkit'
+import { ProductProps } from "@/types/product_props";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface CartState {
-  cartItems: ProductProps[]
+  cartItems: ProductProps[];
 }
 
 const initialState: CartState = {
   cartItems: [],
-}
+};
 
 export const cartSlice = createSlice({
-  name: 'cartItems',
+  name: "cartItems",
   initialState,
   reducers: {
     add: (state, action) => {
-      state.cartItems.push(action.payload)
+      state.cartItems.push(action.payload);
     },
-    remove: (state, action) => {},
+    remove: (state, action) => {
+      state.cartItems.filter((item) => item.id == action.payload);
+    },
   },
-})
+});
 
-export const { add, remove } = cartSlice.actions
-export default cartSlice.reducer
+export const { add, remove } = cartSlice.actions;
+export default cartSlice.reducer;
