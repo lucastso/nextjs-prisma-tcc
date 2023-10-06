@@ -19,20 +19,23 @@ export default async function Products({ searchParams: { q, o } }: Params) {
       <Filters />
 
       <section className="mt-8 grid grid-cols-4 gap-8">
-        {products.map((product) => {
-          return (
-            <ProductComponent
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              category={product.category}
-              description={product.description}
-              price={product.price}
-              image={product.image}
-              createdAt={product.createdAt}
-            />
-          );
-        })}
+        {products
+          .filter((product) => product.quantity > 5)
+          .map((product) => {
+            return (
+              <ProductComponent
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                category={product.category}
+                description={product.description}
+                price={product.price}
+                quantity={product.quantity}
+                image={product.image}
+                createdAt={product.createdAt}
+              />
+            );
+          })}
       </section>
     </div>
   );
