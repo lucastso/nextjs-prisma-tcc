@@ -8,8 +8,8 @@ const Filters = () => {
   const [categorySelectedValue, setCategorySelectedValue] = useState<string>(
     "Todas as categorias"
   );
-  const [orderSelectedValue, setOrderSelectedValue] =
-    useState<string>("Relevância");
+  // const [orderSelectedValue, setOrderSelectedValue] =
+  //   useState<string>("Relevância");
 
   const handleCategorySelectChange = (
     event: ChangeEvent<HTMLSelectElement>
@@ -24,16 +24,16 @@ const Filters = () => {
     }
   };
 
-  const handleOrderSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.currentTarget.value;
-    if (selectedValue !== "Relevância") {
-      router.push(`/products?o=${selectedValue}`);
-      setOrderSelectedValue(selectedValue);
-    } else {
-      router.push("/products");
-      setOrderSelectedValue("");
-    }
-  };
+  // const handleOrderSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedValue = event.currentTarget.value;
+  //   if (selectedValue !== "Relevância") {
+  //     router.push(`/products?o=${selectedValue}`);
+  //     setOrderSelectedValue(selectedValue);
+  //   } else {
+  //     router.push("/products");
+  //     setOrderSelectedValue("");
+  //   }
+  // };
 
   return (
     <div className="col-span-4 mt-8 flex w-full items-center justify-between">
@@ -55,7 +55,7 @@ const Filters = () => {
         <option value="Fonte">Fontes</option>
       </select>
 
-      <select
+      {/* <select
         value={orderSelectedValue}
         name="order"
         id="order"
@@ -65,7 +65,7 @@ const Filters = () => {
         <option value="Relevância">Relevância</option>
         <option value="desc">Maior preço</option>
         <option value="asc">Menor preço</option>
-      </select>
+      </select> */}
     </div>
   );
 };
