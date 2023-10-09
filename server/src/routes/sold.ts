@@ -45,7 +45,7 @@ export const soldRoutes = async (app: FastifyInstance) => {
           category,
         },
       });
-  
+
       sold.push(sale);
   
       const soldId = sale.id;
