@@ -19,5 +19,12 @@ app
     port: PORT,
   })
   .then(() => {
-    console.log(`Application running on http://localhost:${PORT}`)
+    console.log(`
+🚀 Server running!
+
+🌐 Local URL:
+   http://localhost:${PORT}
+
+✨ Paracord Project ON! ✨
+`);
   })
