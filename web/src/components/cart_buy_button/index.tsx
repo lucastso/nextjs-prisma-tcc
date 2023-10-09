@@ -1,23 +1,28 @@
-'use client'
+"use client";
 
-import { api } from '@/lib/axios'
-import { ProductProps } from '@/types/product_props'
-import { useRouter } from 'next/navigation'
-import { Slide, ToastContainer, toast } from 'react-toastify'
+import { api } from "@/lib/axios";
+import { ProductProps } from "@/types/product_props";
+import { useRouter } from "next/navigation";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import { removeAll } from "@/redux/features/cart";
+import { useDispatch } from "react-redux";
 
 type CartBuyButtonProductProps = {
-  products: ProductProps[]
-}
+  products: ProductProps[];
+};
 
 const CartBuyButton = ({ products }: CartBuyButtonProductProps) => {
-  const router = useRouter()
+  const router = useRouter();
+  const dispatch = useDispatch();
+
   const handleCartBuyButtonClick = () => {
     if (products.length !== 0) {
-      api.post('/sales', { products })
-      toast('Compra finalizada!')
-      router.push('/thx')
+      api.post("/sales", { products });
+      toast("Compra finalizada!");
+      router.push("/thx");
+      dispatch(removeAll());
     }
-  }
+  };
 
   return (
     <div>
@@ -29,8 +34,8 @@ const CartBuyButton = ({ products }: CartBuyButtonProductProps) => {
       </button>
       <ToastContainer
         toastStyle={{
-          backgroundColor: '#242424',
-          fontSize: '16px',
+          backgroundColor: "#242424",
+          fontSize: "16px",
           fontWeight: 600,
         }}
         transition={Slide}
@@ -45,7 +50,7 @@ const CartBuyButton = ({ products }: CartBuyButtonProductProps) => {
         theme="dark"
       />
     </div>
-  )
-}
+  );
+};
 
-export default CartBuyButton
+export default CartBuyButton;

@@ -22,26 +22,48 @@ export const soldRoutes = async (app: FastifyInstance) => {
           category: z.string(),
         }),
       ),
-    })
-
-    const { products } = bodySchema.parse(request.body)
-
-    const sold = []
-
+      name: z.string(),
+      email: z.string(),
+      cep: z.string(),
+      address: z.string(),
+      neighborhood: z.string(),
+      city: z.string(),
+      state: z.string(),
+    });
+  
+    const { products, name, email, cep, address, neighborhood, city, state } = bodySchema.parse(request.body);
+  
+    const sold = [];
+  
     for (const productData of products) {
-      const { title, price, category } = productData
-
+      const { title, price, category } = productData;
+  
       const sale = await prisma.sold.create({
         data: {
           title,
           price,
           category,
         },
-      })
-
-      sold.push(sale)
+      });
+  
+      sold.push(sale);
+  
+      const soldId = sale.id;
+  
+      await prisma.order.create({
+        data: {
+          name,
+          email,
+          cep,
+          address,
+          neighborhood,
+          city,
+          state,
+          soldId,
+        },
+      });
     }
-
-    return sold
-  })
+  
+    return sold;
+  });
 }

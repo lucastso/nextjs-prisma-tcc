@@ -16,6 +16,7 @@ model Product {
   price       Float
   quantity    Int
   createdAt   DateTime @default(now())
+  sold        Sold[]
 }
 
 model Sold {
@@ -24,12 +25,21 @@ model Sold {
   price     Float
   category  String
   createdAt DateTime @default(now())
+  productId String?
+  Order     Order[]
+  product   Product? @relation(fields: [productId], references: [id])
 }
 
-model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String
-  createdAt DateTime @default(now())
-  password  String?
+model Order {
+  id           String   @id @default(uuid())
+  name         String
+  email        String
+  cep          String
+  address      String
+  neighborhood String
+  city         String
+  state        String
+  createdAt    DateTime @default(now())
+  soldId       String
+  sold         Sold     @relation(fields: [soldId], references: [id])
 }

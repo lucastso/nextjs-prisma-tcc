@@ -1,6 +1,5 @@
 "use client";
 
-import CartBuyButton from "@/components/cart_buy_button";
 import { remove } from "@/redux/features/cart";
 import { RootState } from "@/redux/store";
 import Image from "next/image";
@@ -99,7 +98,12 @@ export default function Cart() {
               <strong className="text-2xl">{formatToPrice(totalPrice)}</strong>
             </p>
 
-            <CartBuyButton products={products} />
+            <Link
+              href="/check-purchase"
+              className="w-fit rounded-full bg-zinc-900 px-6 py-3 font-semibold text-white"
+            >
+              Ir para finalização
+            </Link>
           </div>
         </div>
       )}
