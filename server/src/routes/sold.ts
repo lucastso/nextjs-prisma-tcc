@@ -17,6 +17,7 @@ export const soldRoutes = async (app: FastifyInstance) => {
     const bodySchema = z.object({
       products: z.array(
         z.object({
+          id: z.string(),
           title: z.string(),
           price: z.number(),
           category: z.string(),
@@ -36,13 +37,14 @@ export const soldRoutes = async (app: FastifyInstance) => {
     const sold = [];
   
     for (const productData of products) {
-      const { title, price, category } = productData;
+      const { title, price, category, id } = productData;
   
       const sale = await prisma.sold.create({
         data: {
           title,
           price,
           category,
+          productId: id,
         },
       });
 

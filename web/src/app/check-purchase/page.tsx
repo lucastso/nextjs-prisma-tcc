@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import CartBuyButton from "@/components/cart_buy_button";
 import Link from "next/link";
+import { ChangeEvent, useState } from "react";
 
 const CheckPurchase = () => {
   const products = useSelector((state: RootState) => state.cartItems);
@@ -27,6 +28,32 @@ const CheckPurchase = () => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    cep: "",
+    address: "",
+    neighborhood: "",
+    city: "",
+    state: "",
+  });
+
+  const [formValid, setFormValid] = useState(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    const isFormValid = Object.values(formData).every(
+      (field) => field.trim() !== ""
+    );
+    setFormValid(isFormValid);
+  };
+
   if (products.length == 0) {
     return (
       <div className="mx-auto mb-auto mt-8 flex flex-col gap-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
@@ -44,6 +71,12 @@ const CheckPurchase = () => {
   return (
     <div className="mx-auto mb-auto mt-8 space-y-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
       <div>
+        <strong className="text-xl">
+          Preencha todos os dados para concluir a compra:
+        </strong>
+      </div>
+
+      <div>
         <strong>Seus dados</strong>
       </div>
 
@@ -54,6 +87,8 @@ const CheckPurchase = () => {
             type="text"
             id="name"
             name="name"
+            value={formData.name}
+            onChange={handleChange}
             placeholder="Seu nome"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
@@ -65,6 +100,8 @@ const CheckPurchase = () => {
             type="text"
             id="email"
             name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="Seu melhor e-mail"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
@@ -82,6 +119,8 @@ const CheckPurchase = () => {
             type="text"
             id="cep"
             name="cep"
+            value={formData.cep}
+            onChange={handleChange}
             placeholder="CEP"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
@@ -91,8 +130,10 @@ const CheckPurchase = () => {
           <label htmlFor="rua">Rua e número:</label>
           <input
             type="text"
-            id="rua"
-            name="rua"
+            id="address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
             placeholder="Rua João Maria, 123"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
@@ -102,8 +143,10 @@ const CheckPurchase = () => {
           <label htmlFor="bairro">Bairro:</label>
           <input
             type="text"
-            id="bairro"
-            name="bairro"
+            id="neighborhood"
+            name="neighborhood"
+            value={formData.neighborhood}
+            onChange={handleChange}
             placeholder="Bairro"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
@@ -113,8 +156,10 @@ const CheckPurchase = () => {
           <label htmlFor="cidade">Cidade:</label>
           <input
             type="text"
-            id="cidade"
-            name="cidade"
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
             placeholder="Cidade"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
@@ -124,8 +169,10 @@ const CheckPurchase = () => {
           <label htmlFor="estado">Estado:</label>
           <input
             type="text"
-            id="estado"
-            name="estado"
+            id="state"
+            name="state"
+            value={formData.state}
+            onChange={handleChange}
             placeholder="Estado:"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
@@ -191,7 +238,11 @@ const CheckPurchase = () => {
               <strong className="text-2xl">{formatToPrice(totalPrice)}</strong>
             </p>
 
-            <CartBuyButton products={products} />
+            <CartBuyButton
+              products={products}
+              formValid={formValid}
+              formData={formData}
+            />
 
             <button
               className="w-fit rounded-full bg-red-500 px-6 py-3 font-semibold text-white"
