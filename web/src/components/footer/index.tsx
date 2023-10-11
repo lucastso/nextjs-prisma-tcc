@@ -1,8 +1,8 @@
-import { fontOutfit } from '@/assets/fonts'
-import appLogo from '../../assets/logo.svg'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import { fontOutfit } from "@/assets/fonts";
+import appLogo from "../../assets/logo.svg";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const Footer = () => {
   return (
@@ -13,7 +13,9 @@ const Footer = () => {
             <Link href="/">
               <Image src={appLogo} alt="Paracord" className="w-24" />
             </Link>
-            <span>A Paracord é um e-commerce de pesca.</span>
+            <span>
+              A Paracord é um e-commerce de hardware para computadores.
+            </span>
           </div>
           <div className="flex items-start gap-24 text-zinc-900">
             <div className="flex flex-col gap-4">
@@ -40,6 +42,10 @@ const Footer = () => {
               width={128}
               height={24}
             />
+            <span className="text-end text-zinc-400">
+              Rua Jorge Macruz, 95.
+              <br /> Ao lado da padaria Benvenuto.
+            </span>
           </div>
         </div>
       </div>
@@ -48,7 +54,7 @@ const Footer = () => {
         <span>Copyright &copy; Woogon 2023. Todos os direitos reservados.</span>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
