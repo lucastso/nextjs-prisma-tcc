@@ -1,31 +1,31 @@
-"use client";
+'use client'
 
-import { remove } from "@/redux/features/cart";
-import { RootState } from "@/redux/store";
-import Image from "next/image";
-import Link from "next/link";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { remove } from '@/redux/features/cart'
+import { RootState } from '@/redux/store'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Cart() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleRemoveButtonClick = (id: string) => {
-    toast("Item removido do carrinho!");
-    dispatch(remove(id));
-  };
+    toast('Item removido do carrinho!')
+    dispatch(remove(id))
+  }
 
-  const products = useSelector((state: RootState) => state.cartItems);
+  const products = useSelector((state: RootState) => state.cartItems)
 
-  let totalPrice = 0;
+  let totalPrice = 0
   products.forEach((item) => {
-    totalPrice += item.price;
-  });
+    totalPrice += item.price
+  })
 
   const formatToPrice = (number: number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
 
   return (
     <div className="mx-auto mb-auto mt-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
@@ -68,7 +68,7 @@ export default function Cart() {
                       </span>
                       <div className="flex items-center gap-2">
                         <p className="whitespace-nowrap">
-                          R${" "}
+                          R${' '}
                           <strong className="text-2xl">
                             {formatToPrice(product.price)}
                           </strong>
@@ -84,7 +84,7 @@ export default function Cart() {
                     </div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
@@ -94,7 +94,7 @@ export default function Cart() {
             <span>{products.length} produto(s)</span>
 
             <p className="whitespace-nowrap">
-              R${" "}
+              R${' '}
               <strong className="text-2xl">{formatToPrice(totalPrice)}</strong>
             </p>
 
@@ -108,5 +108,5 @@ export default function Cart() {
         </div>
       )}
     </div>
-  );
+  )
 }

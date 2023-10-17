@@ -1,18 +1,18 @@
-import Filters from "@/components/filters";
-import ProductComponent from "@/components/product";
-import { api } from "@/lib/axios";
-import { ProductProps } from "@/types/product_props";
+import Filters from '@/components/filters'
+import ProductComponent from '@/components/product'
+import { api } from '@/lib/axios'
+import { ProductProps } from '@/types/product_props'
 
 type Params = {
   searchParams: {
-    q: string;
-    o: string;
-  };
-};
+    q: string
+    o: string
+  }
+}
 
 export default async function Products({ searchParams: { q, o } }: Params) {
-  const response = await api.get(q ? `/products/search?q=${q}` : `/products`);
-  const products: ProductProps[] = response.data;
+  const response = await api.get(q ? `/products/search?q=${q}` : `/products`)
+  const products: ProductProps[] = response.data
 
   return (
     <div className="font-outfit mx-auto mb-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
@@ -34,9 +34,9 @@ export default async function Products({ searchParams: { q, o } }: Params) {
                 image={product.image}
                 createdAt={product.createdAt}
               />
-            );
+            )
           })}
       </section>
     </div>
-  );
+  )
 }

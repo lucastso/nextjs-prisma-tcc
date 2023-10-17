@@ -50,6 +50,7 @@ const DailyCategory = ({ products }: ProductPropsList) => {
                 price={product.price}
                 image={product.image}
                 createdAt={product.createdAt}
+                quantity={product.quantity}
               />
             )
           })}

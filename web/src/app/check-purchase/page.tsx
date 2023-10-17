@@ -1,60 +1,60 @@
-"use client";
+'use client'
 
-import { toast } from "react-toastify";
-import { remove, removeAll } from "@/redux/features/cart";
-import { RootState } from "@/redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import "react-toastify/dist/ReactToastify.css";
-import Image from "next/image";
-import CartBuyButton from "@/components/cart_buy_button";
-import Link from "next/link";
-import { ChangeEvent, useState } from "react";
+import { toast } from 'react-toastify'
+import { remove, removeAll } from '@/redux/features/cart'
+import { RootState } from '@/redux/store'
+import { useSelector, useDispatch } from 'react-redux'
+import 'react-toastify/dist/ReactToastify.css'
+import Image from 'next/image'
+import CartBuyButton from '@/components/cart_buy_button'
+import Link from 'next/link'
+import { ChangeEvent, useState } from 'react'
 
 const CheckPurchase = () => {
-  const products = useSelector((state: RootState) => state.cartItems);
-  const dispatch = useDispatch();
+  const products = useSelector((state: RootState) => state.cartItems)
+  const dispatch = useDispatch()
 
   const handleRemoveButtonClick = (id: string) => {
-    toast("Item removido do carrinho!");
-    dispatch(remove(id));
-  };
+    toast('Item removido do carrinho!')
+    dispatch(remove(id))
+  }
 
-  let totalPrice = 0;
+  let totalPrice = 0
   products.forEach((item) => {
-    totalPrice += item.price;
-  });
+    totalPrice += item.price
+  })
 
   const formatToPrice = (number: number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    cep: "",
-    address: "",
-    neighborhood: "",
-    city: "",
-    state: "",
-  });
+    name: '',
+    email: '',
+    cep: '',
+    address: '',
+    neighborhood: '',
+    city: '',
+    state: '',
+  })
 
-  const [formValid, setFormValid] = useState(false);
+  const [formValid, setFormValid] = useState(false)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
     setFormData({
       ...formData,
       [name]: value,
-    });
+    })
 
     const isFormValid = Object.values(formData).every(
-      (field) => field.trim() !== ""
-    );
-    setFormValid(isFormValid);
-  };
+      (field) => field.trim() !== '',
+    )
+    setFormValid(isFormValid)
+  }
 
-  if (products.length == 0) {
+  if (products.length === 0) {
     return (
       <div className="mx-auto mb-auto mt-8 flex flex-col gap-8 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
         <p>Você não tem produtos no seu carrinho!</p>
@@ -65,7 +65,7 @@ const CheckPurchase = () => {
           Explorar produtos
         </Link>
       </div>
-    );
+    )
   }
 
   return (
@@ -208,7 +208,7 @@ const CheckPurchase = () => {
                       </span>
                       <div className="flex items-center gap-2">
                         <p className="whitespace-nowrap">
-                          R${" "}
+                          R${' '}
                           <strong className="text-2xl">
                             {formatToPrice(product.price)}
                           </strong>
@@ -224,7 +224,7 @@ const CheckPurchase = () => {
                     </div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
@@ -234,7 +234,7 @@ const CheckPurchase = () => {
             <span>{products.length} produto(s)</span>
 
             <p className="whitespace-nowrap">
-              R${" "}
+              R${' '}
               <strong className="text-2xl">{formatToPrice(totalPrice)}</strong>
             </p>
 
@@ -254,7 +254,7 @@ const CheckPurchase = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CheckPurchase;
+export default CheckPurchase

@@ -1,8 +1,8 @@
-import { fontOutfit } from "@/assets/fonts";
-import appLogo from "../../assets/logo.svg";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { fontOutfit } from '@/assets/fonts'
+import appLogo from '../../assets/logo.svg'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
 const Footer = () => {
   return (
@@ -54,7 +54,7 @@ const Footer = () => {
         <span>Copyright &copy; Woogon 2023. Todos os direitos reservados.</span>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,21 +1,21 @@
-"use client";
+'use client'
 
-import { RootState } from "@/redux/store";
-import { ShoppingCart } from "lucide-react";
-import Link from "next/link";
-import { useSelector } from "react-redux";
+import { RootState } from '@/redux/store'
+import { ShoppingCart } from 'lucide-react'
+import Link from 'next/link'
+import { useSelector } from 'react-redux'
 
 const NavbarCart = () => {
-  const products = useSelector((state: RootState) => state.cartItems);
+  const products = useSelector((state: RootState) => state.cartItems)
 
-  let totalPrice = 0;
+  let totalPrice = 0
   products.forEach((item) => {
-    totalPrice += item.price;
-  });
+    totalPrice += item.price
+  })
 
   const formatToPrice = (number: number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
 
   return (
     <Link href="/cart" className="flex items-center justify-center gap-2">
@@ -31,7 +31,7 @@ const NavbarCart = () => {
         R$ <strong>{formatToPrice(totalPrice)}</strong>
       </span>
     </Link>
-  );
-};
+  )
+}
 
-export default NavbarCart;
+export default NavbarCart

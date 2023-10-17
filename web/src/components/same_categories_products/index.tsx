@@ -28,6 +28,7 @@ const SameCategoriesProducts = ({ products, category }: ProductPropsList) => {
                 price={product.price}
                 image={product.image}
                 createdAt={product.createdAt}
+                quantity={product.quantity}
               />
             )
           })}

@@ -1,28 +1,28 @@
-"use client";
+'use client'
 
-import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { useRouter } from 'next/navigation'
+import { ChangeEvent, useState } from 'react'
 
 const Filters = () => {
-  const router = useRouter();
+  const router = useRouter()
   const [categorySelectedValue, setCategorySelectedValue] = useState<string>(
-    "Todas as categorias"
-  );
+    'Todas as categorias',
+  )
   // const [orderSelectedValue, setOrderSelectedValue] =
   //   useState<string>("Relevância");
 
   const handleCategorySelectChange = (
-    event: ChangeEvent<HTMLSelectElement>
+    event: ChangeEvent<HTMLSelectElement>,
   ) => {
-    const selectedValue = event.currentTarget.value;
-    if (selectedValue !== "Todos") {
-      router.push(`/products?q=${selectedValue}`);
-      setCategorySelectedValue(selectedValue);
+    const selectedValue = event.currentTarget.value
+    if (selectedValue !== 'Todos') {
+      router.push(`/products?q=${selectedValue}`)
+      setCategorySelectedValue(selectedValue)
     } else {
-      router.push("/products");
-      setCategorySelectedValue("");
+      router.push('/products')
+      setCategorySelectedValue('')
     }
-  };
+  }
 
   // const handleOrderSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
   //   const selectedValue = event.currentTarget.value;
@@ -67,7 +67,7 @@ const Filters = () => {
         <option value="asc">Menor preço</option>
       </select> */}
     </div>
-  );
-};
+  )
+}
 
-export default Filters;
+export default Filters
