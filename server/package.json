@@ -13,6 +13,7 @@
   "dependencies": {
     "@fastify/cors": "^8.2.1",
     "@types/node": "^20.1.7",
+    "@vercel/postgres": "^0.5.0",
     "fastify": "^4.17.0",
     "zod": "^3.21.4"
   },
