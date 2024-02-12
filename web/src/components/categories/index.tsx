@@ -1,35 +1,35 @@
-import { randomUUID } from 'node:crypto'
+import { v4 } from 'uuid'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const CategoriesComponent = () => {
   const categories = [
     {
-      id: randomUUID(),
+      id: v4(),
       category: 'Teclado',
       image:
         'https://images.unsplash.com/photo-1630096711968-d118c17a173a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
     },
     {
-      id: randomUUID(),
+      id: v4(),
       category: 'Mouse',
       image:
         'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80',
     },
     {
-      id: randomUUID(),
+      id: v4(),
       category: 'Headset',
       image:
         'https://images.unsplash.com/photo-1599855129460-58c62b60e3df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
     },
     {
-      id: randomUUID(),
+      id: v4(),
       category: 'GPU',
       image:
         'https://images.unsplash.com/photo-1622957040873-8ea24e293885?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80',
     },
     {
-      id: randomUUID(),
+      id: v4(),
       category: 'CPU',
       image:
         'https://images.unsplash.com/photo-1600348712270-5af9e3590f66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',

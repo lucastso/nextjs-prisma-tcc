@@ -14,6 +14,10 @@ app.register(productsRoutes)
 app.register(soldRoutes)
 app.register(ordersRoutes)
 
+app.get('/', (req, res) => {
+  res.send("Hello!")
+})
+
 app
   .listen({
     port: PORT,

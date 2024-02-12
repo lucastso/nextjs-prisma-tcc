@@ -16,10 +16,10 @@ export const productsRoutes = async (app: FastifyInstance) => {
   app.get("/products/search", async (request) => {
     const querySchema = z.object({
       q: z.string().optional(),
-      o: z.string().optional(),
+      // o: z.string().optional(),
     });
 
-    const { q, o } = querySchema.parse(request.query);
+    const { q } = querySchema.parse(request.query);
 
     const products = await prisma.product.findMany({
       where: {
@@ -46,7 +46,7 @@ export const productsRoutes = async (app: FastifyInstance) => {
 
   app.get("/products/:id", async (request) => {
     const paramsSchema = z.object({
-      id: z.string().uuid(),
+      id: z.string(),
     });
 
     const { id } = paramsSchema.parse(request.params);
@@ -89,7 +89,7 @@ export const productsRoutes = async (app: FastifyInstance) => {
 
   app.put("/products/:id", async (request) => {
     const paramsSchema = z.object({
-      id: z.string().uuid(),
+      id: z.string(),
     });
 
     const { id } = paramsSchema.parse(request.params);
@@ -130,7 +130,7 @@ export const productsRoutes = async (app: FastifyInstance) => {
 
   app.delete("/products/:id", async (request) => {
     const paramsSchema = z.object({
-      id: z.string().uuid(),
+      id: z.string(),
     });
 
     const { id } = paramsSchema.parse(request.params);

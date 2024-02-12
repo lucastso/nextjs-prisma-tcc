@@ -48,9 +48,11 @@ const CheckPurchase = () => {
       [name]: value,
     })
 
-    const isFormValid = Object.values(formData).every(
-      (field) => field.trim() !== '',
-    )
+    const isFormValid = Object.values(formData).every((field) => {
+      if (typeof field === 'string') {
+        field.trim() !== ''
+      }
+    })
     setFormValid(isFormValid)
   }
 
