@@ -1,34 +1,34 @@
-'use client'
+"use client";
 
-import { ProductProps } from '@/types/product_props'
-import ProductComponent from '../product'
-import { useEffect, useState } from 'react'
-import { Trophy } from 'lucide-react'
+import { ProductProps } from "@/types/product_props";
+import ProductComponent from "../product";
+import { useEffect, useState } from "react";
+import { Trophy } from "lucide-react";
 
 type ProductPropsList = {
-  products: ProductProps[]
-}
+  products: ProductProps[];
+};
 
 const DailyCategory = ({ products }: ProductPropsList) => {
-  const [item, setItem] = useState('')
+  const [item, setItem] = useState("");
 
   useEffect(() => {
     const categories = [
-      'CPU',
-      'Fonte',
-      'GPU',
-      'Headset',
-      'Memória',
-      'Mouse',
-      'SSD',
-      'Teclado',
-    ]
+      "CPU",
+      "Fonte",
+      "GPU",
+      "Headset",
+      "Memória",
+      "Mouse",
+      "SSD",
+      "Teclado",
+    ];
 
     const itemSorteado =
-      categories[Math.floor(Math.random() * categories.length)]
+      categories[Math.floor(Math.random() * categories.length)];
 
-    setItem(itemSorteado)
-  }, [])
+    setItem(itemSorteado);
+  }, []);
 
   return (
     <section className="grid grid-cols-4 gap-4">
@@ -52,11 +52,11 @@ const DailyCategory = ({ products }: ProductPropsList) => {
                 createdAt={product.createdAt}
                 quantity={product.quantity}
               />
-            )
+            );
           })}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default DailyCategory
+export default DailyCategory;

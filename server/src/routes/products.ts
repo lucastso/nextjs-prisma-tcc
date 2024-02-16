@@ -67,10 +67,10 @@ export const productsRoutes = async (app: FastifyInstance) => {
       price: z.number(),
       image: z.string(),
       category: z.string(),
-      quantity: z.number(),
+      stock: z.number(),
     });
 
-    const { title, description, price, image, category, quantity } =
+    const { title, description, price, image, category, stock } =
       bodySchema.parse(request.body);
 
     const products = prisma.product.create({
@@ -80,7 +80,7 @@ export const productsRoutes = async (app: FastifyInstance) => {
         price,
         image,
         category,
-        quantity,
+        stock,
       },
     });
 
@@ -99,10 +99,10 @@ export const productsRoutes = async (app: FastifyInstance) => {
       description: z.string(),
       image: z.string(),
       price: z.number(),
-      quantity: z.number(),
+      stock: z.number(),
     });
 
-    const { title, description, image, price, quantity } = bodySchema.parse(
+    const { title, description, image, price, stock } = bodySchema.parse(
       request.body
     );
 
@@ -121,7 +121,7 @@ export const productsRoutes = async (app: FastifyInstance) => {
         description,
         image,
         price,
-        quantity,
+        stock,
       },
     });
 

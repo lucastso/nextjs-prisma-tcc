@@ -1,19 +1,19 @@
-import { FastifyInstance } from 'fastify'
-import { prisma } from '../lib/prisma'
-import { z } from 'zod'
+import { FastifyInstance } from "fastify";
+import { prisma } from "../lib/prisma";
+import { z } from "zod";
 
 export const soldRoutes = async (app: FastifyInstance) => {
-  app.get('/sales', async () => {
+  app.get("/sales", async () => {
     const sales = await prisma.sold.findMany({
       orderBy: {
-        createdAt: 'desc',
+        createdAt: "desc",
       },
-    })
+    });
 
-    return sales
-  })
+    return sales;
+  });
 
-  app.post('/sales', async (request) => {
+  app.post("/sales", async (request) => {
     const bodySchema = z.object({
       products: z.array(
         z.object({
@@ -21,7 +21,7 @@ export const soldRoutes = async (app: FastifyInstance) => {
           title: z.string(),
           price: z.number(),
           category: z.string(),
-        }),
+        })
       ),
       name: z.string(),
       email: z.string(),
@@ -30,15 +30,26 @@ export const soldRoutes = async (app: FastifyInstance) => {
       neighborhood: z.string(),
       city: z.string(),
       state: z.string(),
+      done: z.boolean(),
     });
-  
-    const { products, name, email, cep, address, neighborhood, city, state } = bodySchema.parse(request.body);
-  
+
+    const {
+      products,
+      name,
+      email,
+      cep,
+      address,
+      neighborhood,
+      city,
+      state,
+      done,
+    } = bodySchema.parse(request.body);
+
     const sold = [];
-  
+
     for (const productData of products) {
       const { title, price, category, id } = productData;
-  
+
       const sale = await prisma.sold.create({
         data: {
           title,
@@ -49,9 +60,9 @@ export const soldRoutes = async (app: FastifyInstance) => {
       });
 
       sold.push(sale);
-  
+
       const soldId = sale.id;
-  
+
       await prisma.order.create({
         data: {
           name,
@@ -62,10 +73,22 @@ export const soldRoutes = async (app: FastifyInstance) => {
           city,
           state,
           soldId,
+          done,
+        },
+      });
+
+      await prisma.product.update({
+        where: {
+          id,
+        },
+        data: {
+          stock: {
+            decrement: 1,
+          },
         },
       });
     }
-  
+
     return sold;
   });
-}
+};

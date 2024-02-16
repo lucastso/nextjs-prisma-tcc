@@ -1,11 +1,11 @@
-import { ProductProps } from '@/types/product_props'
-import React from 'react'
-import ProductComponent from '../product'
+import { ProductProps } from "@/types/product_props";
+import React from "react";
+import ProductComponent from "../product";
 
 type ProductPropsList = {
-  products: ProductProps[]
-  category: string
-}
+  products: ProductProps[];
+  category: string;
+};
 
 const SameCategoriesProducts = ({ products, category }: ProductPropsList) => {
   return (
@@ -30,11 +30,11 @@ const SameCategoriesProducts = ({ products, category }: ProductPropsList) => {
                 createdAt={product.createdAt}
                 quantity={product.quantity}
               />
-            )
+            );
           })}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default SameCategoriesProducts
+export default SameCategoriesProducts;
