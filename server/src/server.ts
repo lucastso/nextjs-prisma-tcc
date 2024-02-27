@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 
 app
   .listen({
+    host: '0.0.0.0',
     port: PORT,
   })
   .then(() => {
