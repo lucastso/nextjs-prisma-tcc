@@ -19,8 +19,9 @@ const createNoopStorage = () => {
   }
 }
 
-const storage = typeof window !== 'undefined'
-  ? createWebStorage('local') : createNoopStorage()
+const storage =
+    typeof window !== 'undefined'
+    ? createWebStorage('local') : createNoopStorage()
 
 const persistConfig = {
   key: 'root',
@@ -30,7 +31,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, cartReducer)
 
 const customizedMiddleware = getDefaultMiddleware({
-  serializableCheck: false
+  serializableCheck: false,
 })
 
 export const store = configureStore({
