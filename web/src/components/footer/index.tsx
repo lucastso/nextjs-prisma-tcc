@@ -28,7 +28,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4">
               <strong>Suporte</strong>
               <div className="flex flex-col gap-2 text-zinc-400">
-                <Link href="tel:15981289156">15-98128-9156</Link>
+                <Link href="tel:15981289156">15-98128-9155</Link>
                 <Link href="/terms">Termos de uso</Link>
               </div>
             </div>
@@ -43,15 +43,15 @@ const Footer = () => {
               height={24}
             />
             <span className="text-end text-zinc-400">
-              Rua Jorge Macruz, 95.
-              <br /> Ao lado da padaria Benvenuto.
+              Rua Lucas, 95.
+              <br /> Ao lado da padaria.
             </span>
           </div>
         </div>
       </div>
 
       <div className="mx-auto w-4/6 border-t border-zinc-200 bg-white py-4 text-center text-xs text-zinc-400">
-        <span>Copyright &copy; Woogon 2023. Todos os direitos reservados.</span>
+        <span>Copyright &copy; 2024. Todos os direitos reservados.</span>
       </div>
     </footer>
   )
