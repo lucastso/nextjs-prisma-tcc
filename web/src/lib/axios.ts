@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'https://nextjs-prisma-tcc.vercel.app',
+  baseURL: 'https://nextjs-prisma-tcc-server.onrender.com',
 })
