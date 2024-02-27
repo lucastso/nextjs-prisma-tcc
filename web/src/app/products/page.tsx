@@ -1,18 +1,18 @@
-import Filters from "@/components/filters";
-import ProductComponent from "@/components/product";
-import { api } from "@/lib/axios";
-import { ProductProps } from "@/types/product_props";
+import Filters from '@/components/filters'
+import ProductComponent from '@/components/product'
+import { api } from '@/lib/axios'
+import { ProductProps } from '@/types/product_props'
 
 type Params = {
   searchParams: {
-    q: string;
-    o: string;
-  };
-};
+    q: string
+    o: string
+  }
+}
 
 export default async function Products({ searchParams: { q, o } }: Params) {
-  const response = await api.get(q ? `/products/search?q=${q}` : `/products`);
-  const products: ProductProps[] = response.data;
+  const response = await api.get(q ? `/products/search?q=${q}` : `/products`)
+  const products: ProductProps[] = response.data
 
   return (
     <div className="font-outfit mx-auto mb-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
@@ -20,7 +20,7 @@ export default async function Products({ searchParams: { q, o } }: Params) {
 
       <section className="mt-8 grid grid-cols-4 gap-8">
         {products
-          .filter((product) => product.quantity > 5)
+          .filter((product) => product.stock > 5)
           .map((product) => {
             return (
               <ProductComponent
@@ -30,13 +30,13 @@ export default async function Products({ searchParams: { q, o } }: Params) {
                 category={product.category}
                 description={product.description}
                 price={product.price}
-                quantity={product.quantity}
+                stock={product.stock}
                 image={product.image}
                 createdAt={product.createdAt}
               />
-            );
+            )
           })}
       </section>
     </div>
-  );
+  )
 }

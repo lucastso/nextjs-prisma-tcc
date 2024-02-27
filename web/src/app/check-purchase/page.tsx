@@ -1,68 +1,68 @@
-"use client";
+'use client'
 
-import { toast } from "react-toastify";
-import { remove, removeAll } from "@/redux/features/cart";
-import { RootState } from "@/redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import "react-toastify/dist/ReactToastify.css";
-import Image from "next/image";
-import CartBuyButton from "@/components/cart_buy_button";
-import Link from "next/link";
-import { ChangeEvent, useState } from "react";
+import { toast } from 'react-toastify'
+import { remove, removeAll } from '@/redux/features/cart'
+import { RootState } from '@/redux/store'
+import { useSelector, useDispatch } from 'react-redux'
+import 'react-toastify/dist/ReactToastify.css'
+import Image from 'next/image'
+import CartBuyButton from '@/components/cart_buy_button'
+import Link from 'next/link'
+import { ChangeEvent, useState } from 'react'
 
 const CheckPurchase = () => {
-  const products = useSelector((state: RootState) => state.cartItems);
-  const dispatch = useDispatch();
+  const products = useSelector((state: RootState) => state.cartItems)
+  const dispatch = useDispatch()
 
   const handleRemoveButtonClick = (id: string) => {
-    toast("Item removido do carrinho!");
-    dispatch(remove(id));
-  };
+    toast('Item removido do carrinho!')
+    dispatch(remove(id))
+  }
 
-  let totalPrice = 0;
+  let totalPrice = 0
   products.forEach((item) => {
-    totalPrice += item.price;
-  });
+    totalPrice += item.price
+  })
 
   const formatToPrice = (number: number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    cep: "",
-    address: "",
-    neighborhood: "",
-    city: "",
-    state: "",
-  });
+    name: '',
+    email: '',
+    cep: '',
+    address: '',
+    neighborhood: '',
+    city: '',
+    state: '',
+  })
 
-  const [formValid, setFormValid] = useState(false);
+  const [formValid, setFormValid] = useState(false)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
     // Atualize o estado do formulário
     setFormData({
       ...formData,
       [name]: value,
-    });
+    })
 
     // Verifique a validade do formulário
     const isFormValid = Object.values({
       ...formData,
       [name]: value, // Atualiza também o campo modificado
     }).every((field) => {
-      if (typeof field === "string") {
-        return field.trim() !== ""; // Verifica se o campo de texto não está vazio
+      if (typeof field === 'string') {
+        return field.trim() !== '' // Verifica se o campo de texto não está vazio
       }
-      return false; // Retorna false para campos que não são strings
-    });
+      return false // Retorna false para campos que não são strings
+    })
 
     // Atualize o estado da validade do formulário
-    setFormValid(isFormValid);
-  };
+    setFormValid(isFormValid)
+  }
 
   if (products.length === 0) {
     return (
@@ -75,7 +75,7 @@ const CheckPurchase = () => {
           Explorar produtos
         </Link>
       </div>
-    );
+    )
   }
 
   return (
@@ -218,7 +218,7 @@ const CheckPurchase = () => {
                       </span>
                       <div className="flex items-center gap-2">
                         <p className="whitespace-nowrap">
-                          R${" "}
+                          R${' '}
                           <strong className="text-2xl">
                             {formatToPrice(product.price)}
                           </strong>
@@ -234,7 +234,7 @@ const CheckPurchase = () => {
                     </div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
 
@@ -244,7 +244,7 @@ const CheckPurchase = () => {
             <span>{products.length} produto(s)</span>
 
             <p className="whitespace-nowrap">
-              R${" "}
+              R${' '}
               <strong className="text-2xl">{formatToPrice(totalPrice)}</strong>
             </p>
 
@@ -264,7 +264,7 @@ const CheckPurchase = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CheckPurchase;
+export default CheckPurchase

@@ -16,7 +16,6 @@ export const productsRoutes = async (app: FastifyInstance) => {
   app.get("/products/search", async (request) => {
     const querySchema = z.object({
       q: z.string().optional(),
-      // o: z.string().optional(),
     });
 
     const { q } = querySchema.parse(request.query);

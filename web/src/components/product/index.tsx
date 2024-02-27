@@ -1,6 +1,6 @@
-import { ProductProps } from "@/types/product_props";
-import Image from "next/image";
-import Link from "next/link";
+import { ProductProps } from '@/types/product_props'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const ProductComponent = ({
   id,
@@ -11,8 +11,8 @@ const ProductComponent = ({
   category,
 }: ProductProps) => {
   const formatToPrice = (number: number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
 
   return (
     <div className="col-span-1 flex w-full flex-col gap-4">
@@ -49,12 +49,12 @@ const ProductComponent = ({
 
         <span>
           {description.length > 16
-            ? description.slice(0, 44).concat("...")
+            ? description.slice(0, 44).concat('...')
             : description}
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductComponent;
+export default ProductComponent
