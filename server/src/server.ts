@@ -5,7 +5,7 @@ import { soldRoutes } from './routes/sold'
 import { ordersRoutes } from './routes/orders'
 
 const app = fastify()
-const PORT = 10000
+const PORT = 3333
 
 app.register(cors, {
   origin: true,
