@@ -15,7 +15,7 @@ app.register(soldRoutes)
 app.register(ordersRoutes)
 
 app.get('/', (req, res) => {
-  res.send("Hello!")
+  res.send("Hello there!")
 })
 
 app
