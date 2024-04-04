@@ -1,4 +1,4 @@
-import { OrdersProps } from "./order_props";
+import { OrdersProps } from "./orders_props";
 import { ProductProps } from "./product_props";
 
 export interface SalesProps {
