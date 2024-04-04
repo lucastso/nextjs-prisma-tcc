@@ -44,18 +44,18 @@ export default async function Orders() {
             return (
               <tr key={item.id} className="even:bg-zinc-100">
                 <td className="h-14 px-4">{item.name}</td>
-                <td className="h-14 px-4">{item.total}</td>
+                <td className="h-14 px-4">{formatToPrice(item.total)}</td>
                 <td className="h-14 px-4" title={address}>
                   {address.length > 50 ? address.slice(0, 50) + '...' : address}
                 </td>
                 <td
                   className={
-                    item.done == true
+                    item.done === true
                       ? 'h-14 px-4 font-bold text-green-400'
                       : 'h-14 px-4 font-bold text-orange-400'
                   }
                 >
-                  {item.done == true ? 'Enviado' : 'Pendente'}
+                  {item.done === true ? 'Enviado' : 'Pendente'}
                 </td>
                 <td className="flex h-14 items-center justify-between px-4">
                   {item.createdAt.replace('T', '/').slice(0, -5)}
