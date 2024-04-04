@@ -7,6 +7,7 @@ import { Slide, ToastContainer, toast } from 'react-toastify'
 import { removeAll } from '@/redux/features/cart'
 import { useDispatch } from 'react-redux'
 import { FormData } from '@/types/order_props'
+import { useAuth } from '@clerk/nextjs'
 
 type CartBuyButtonProductProps = {
   products: ProductProps[]
@@ -21,6 +22,7 @@ const CartBuyButton = ({
 }: CartBuyButtonProductProps) => {
   const router = useRouter()
   const dispatch = useDispatch()
+  const { userId } = useAuth()
 
   let totalPrice = 0
   products.forEach((item) => {
@@ -34,6 +36,7 @@ const CartBuyButton = ({
           ...formData,
           done: false,
           total: totalPrice,
+          buyerId: userId,
         }
 
         api.post('/sales', {

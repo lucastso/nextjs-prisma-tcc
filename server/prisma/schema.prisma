@@ -32,6 +32,7 @@ model Sold {
 
 model Order {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  buyerId      String
   name         String
   email        String
   cep          String
@@ -39,6 +40,7 @@ model Order {
   neighborhood String
   city         String
   state        String
+  total        Float
   done         Boolean
   createdAt    DateTime @default(now())
   soldId       String   @db.ObjectId

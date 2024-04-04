@@ -18,6 +18,27 @@ export const ordersRoutes = async (app: FastifyInstance) => {
     return orders;
   });
 
+  app.get("/orders/:id", async (request) => {
+    const paramsSchema = z.object({
+      id: z.string(),
+    });
+
+    const { id } = paramsSchema.parse(request.params);
+
+    const orders = await prisma.order.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      where: {
+        buyerId: {
+          equals: id,
+        },
+      },
+    });
+
+    return orders;
+  });
+
   app.post("/order/:id", async (request) => {
     const paramsSchema = z.object({
       id: z.string(),

@@ -24,6 +24,8 @@ export const soldRoutes = async (app: FastifyInstance) => {
         })
       ),
       name: z.string(),
+      buyerId: z.string(),
+      total: z.number(),
       email: z.string(),
       cep: z.string(),
       address: z.string(),
@@ -36,6 +38,8 @@ export const soldRoutes = async (app: FastifyInstance) => {
     const {
       products,
       name,
+      buyerId,
+      total,
       email,
       cep,
       address,
@@ -66,6 +70,8 @@ export const soldRoutes = async (app: FastifyInstance) => {
       await prisma.order.create({
         data: {
           name,
+          buyerId,
+          total,
           email,
           cep,
           address,

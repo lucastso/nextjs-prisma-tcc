@@ -4,19 +4,20 @@ import Link from 'next/link'
 import { Menu } from 'lucide-react'
 import NavbarSearch from '../navbar_search'
 import NavbarCart from '../navbar_cart'
+import { UserButton, auth, SignInButton } from '@clerk/nextjs'
 
-const Navbar = () => {
+const Navbar = async () => {
+  const { userId } = auth()
+
   return (
     <nav className="flex w-screen flex-col justify-center">
       <div className="w-screen border-b border-zinc-100 py-3 xs:text-sm lg:text-xs">
-        <div className="mx-auto flex items-center justify-between xs:w-full xs:flex-col xs:gap-8 xs:px-6 lg:w-4/6 lg:flex-row lg:gap-0 lg:px-0">
-          <div className="xs:text-center lg:text-start">
-            <a href="#" className="underline">
-              Inscreva-se
-            </a>{' '}
-            em nossa newsletter.
-          </div>
-
+        <div className="mx-auto flex items-center justify-end space-x-8 xs:w-full xs:flex-col xs:gap-8 xs:px-6 lg:w-4/6 lg:flex-row lg:gap-0 lg:px-0">
+          {userId ? (
+            <UserButton />
+          ) : (
+            <SignInButton afterSignInUrl="/" afterSignUpUrl="/" />
+          )}
           <NavbarCart />
         </div>
       </div>
@@ -31,6 +32,11 @@ const Navbar = () => {
             <Link href="/products" className="font-semibold">
               Produtos
             </Link>
+            {userId && (
+              <Link href="/orders" className="font-semibold">
+                Pedidos
+              </Link>
+            )}
           </div>
         </div>
 
