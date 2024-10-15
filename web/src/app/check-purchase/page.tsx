@@ -36,6 +36,10 @@ const CheckPurchase = () => {
     neighborhood: '',
     city: '',
     state: '',
+    cardNumber: '',
+    cardName: '',
+    cardCodigo: '',
+    cardValidade: '',
   })
 
   const [formValid, setFormValid] = useState(false)
@@ -43,24 +47,21 @@ const CheckPurchase = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
-    // Atualize o estado do formulário
     setFormData({
       ...formData,
       [name]: value,
     })
 
-    // Verifique a validade do formulário
     const isFormValid = Object.values({
       ...formData,
-      [name]: value, // Atualiza também o campo modificado
+      [name]: value,
     }).every((field) => {
       if (typeof field === 'string') {
-        return field.trim() !== '' // Verifica se o campo de texto não está vazio
+        return field.trim() !== ''
       }
-      return false // Retorna false para campos que não são strings
+      return false
     })
 
-    // Atualize o estado da validade do formulário
     setFormValid(isFormValid)
   }
 
@@ -186,6 +187,66 @@ const CheckPurchase = () => {
             placeholder="Estado:"
             className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
           />
+        </div>
+      </div>
+
+      <div>
+        <strong>Cartão</strong>
+      </div>
+
+      <div className="space-y-4">
+        <div className="flex w-full flex-col gap-2">
+          <label htmlFor="name">Nome no cartão:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.cardName}
+            onChange={handleChange}
+            placeholder="Nome no cartão"
+            className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
+          />
+        </div>
+
+        <div className="flex w-full flex-col gap-2">
+          <label htmlFor="email">Número do cartão:</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={formData.cardNumber}
+            onChange={handleChange}
+            placeholder="Número do cartão"
+            className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex w-full flex-col gap-2">
+            <label htmlFor="email">Validade (01/30):</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={formData.cardValidade}
+              onChange={handleChange}
+              placeholder="Validade (ex: 01/30)"
+              className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
+            />
+          </div>
+
+          <div className="flex w-full flex-col gap-2">
+            <label htmlFor="email">Código (ex: 123):</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={formData.cardCodigo}
+              onChange={handleChange}
+              placeholder="Código (ex: 123)"
+              className="rounded-md border border-zinc-200 bg-zinc-100 px-2 py-2 focus:border-zinc-300 focus:outline-none"
+            />
+          </div>
         </div>
       </div>
 
