@@ -31,11 +31,11 @@ const DailyCategory = ({ products }: ProductPropsList) => {
   }, [])
 
   return (
-    <section className="grid grid-cols-4 gap-4">
-      <span className="col-span-4 mb-4 flex items-center gap-1 text-xl font-semibold">
+    <section className="grid gap-4 xs:grid-cols-2 lg:grid-cols-4">
+      <span className="col-span-4 mb-4 flex items-center gap-1 text-xl font-semibold xs:col-span-2">
         {item} - Itens relevantes <Trophy size={16} />
       </span>
-      <div className="col-span-4 grid grid-cols-4 gap-8">
+      <div className="col-span-4 grid gap-8 xs:grid-cols-2 lg:grid-cols-4">
         {products
           .filter((element) => element.category === item)
           .slice(0, 4)

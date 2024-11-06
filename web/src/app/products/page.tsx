@@ -18,7 +18,7 @@ export default async function Products({ searchParams: { q, o } }: Params) {
     <div className="font-outfit mx-auto mb-auto overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
       <Filters />
 
-      <section className="mt-8 grid grid-cols-4 gap-8">
+      <section className="mt-8 grid gap-8 xs:grid-cols-2 lg:grid-cols-4">
         {products
           .filter((product) => product.stock > 5)
           .map((product) => {

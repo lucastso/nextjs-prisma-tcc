@@ -196,11 +196,11 @@ const CheckPurchase = () => {
 
       <div className="space-y-4">
         <div className="flex w-full flex-col gap-2">
-          <label htmlFor="name">Nome no cartão:</label>
+          <label htmlFor="cardName">Nome no cartão:</label>
           <input
             type="text"
-            id="name"
-            name="name"
+            id="cardName"
+            name="cardName"
             value={formData.cardName}
             onChange={handleChange}
             placeholder="Nome no cartão"
@@ -209,11 +209,11 @@ const CheckPurchase = () => {
         </div>
 
         <div className="flex w-full flex-col gap-2">
-          <label htmlFor="email">Número do cartão:</label>
+          <label htmlFor="cardNumber">Número do cartão:</label>
           <input
             type="text"
-            id="email"
-            name="email"
+            id="cardNumber"
+            name="cardNumber"
             value={formData.cardNumber}
             onChange={handleChange}
             placeholder="Número do cartão"
@@ -223,11 +223,11 @@ const CheckPurchase = () => {
 
         <div className="grid grid-cols-2 gap-4">
           <div className="flex w-full flex-col gap-2">
-            <label htmlFor="email">Validade (01/30):</label>
+            <label htmlFor="cardValidade">Validade (01/30):</label>
             <input
               type="text"
-              id="email"
-              name="email"
+              id="cardValidade"
+              name="cardValidade"
               value={formData.cardValidade}
               onChange={handleChange}
               placeholder="Validade (ex: 01/30)"
@@ -236,11 +236,11 @@ const CheckPurchase = () => {
           </div>
 
           <div className="flex w-full flex-col gap-2">
-            <label htmlFor="email">Código (ex: 123):</label>
+            <label htmlFor="cardCodigo">Código (ex: 123):</label>
             <input
               type="text"
-              id="email"
-              name="email"
+              id="cardCodigo"
+              name="cardCodigo"
               value={formData.cardCodigo}
               onChange={handleChange}
               placeholder="Código (ex: 123)"
@@ -257,7 +257,10 @@ const CheckPurchase = () => {
           <div className="flex flex-col gap-8">
             {products.map((product) => {
               return (
-                <div key={product.id} className="flex h-40 w-full gap-8">
+                <div
+                  key={product.id}
+                  className="flex w-full gap-8 xs:h-auto xs:flex-col lg:h-40 lg:flex-row"
+                >
                   <Image
                     src={product.image}
                     alt=""

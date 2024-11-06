@@ -37,8 +37,8 @@ const CategoriesComponent = () => {
   ]
 
   return (
-    <section className="grid grid-cols-5 gap-4">
-      <span className="col-span-5 mb-4 text-xl font-semibold">
+    <section className="grid gap-4 xs:grid-cols-2 lg:grid-cols-5">
+      <span className="mb-4 text-xl font-semibold xs:col-span-2 lg:col-span-5">
         Compre em nossas melhores categorias
       </span>
       {categories.map((item) => {

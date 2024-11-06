@@ -17,7 +17,7 @@ const NavbarSearch = () => {
 
   return (
     <form
-      className="relative flex h-10 w-56 items-center rounded-full bg-zinc-100"
+      className="relative flex h-10 items-center rounded-full bg-zinc-100 xs:w-40 lg:w-56"
       onSubmit={onSearch}
     >
       <input

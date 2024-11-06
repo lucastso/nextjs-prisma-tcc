@@ -1,19 +1,19 @@
-import { FastifyInstance } from "fastify";
-import { prisma } from "../lib/prisma";
-import { z } from "zod";
+import { FastifyInstance } from 'fastify'
+import { prisma } from '../lib/prisma'
+import { z } from 'zod'
 
 export const soldRoutes = async (app: FastifyInstance) => {
-  app.get("/sales", async () => {
+  app.get('/sales', async () => {
     const sales = await prisma.sold.findMany({
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
-    });
+    })
 
-    return sales;
-  });
+    return sales
+  })
 
-  app.post("/sales", async (request) => {
+  app.post('/sales', async (request) => {
     const bodySchema = z.object({
       products: z.array(
         z.object({
@@ -21,7 +21,7 @@ export const soldRoutes = async (app: FastifyInstance) => {
           title: z.string(),
           price: z.number(),
           category: z.string(),
-        })
+        }),
       ),
       name: z.string(),
       buyerId: z.string(),
@@ -33,7 +33,7 @@ export const soldRoutes = async (app: FastifyInstance) => {
       city: z.string(),
       state: z.string(),
       done: z.boolean(),
-    });
+    })
 
     const {
       products,
@@ -47,12 +47,12 @@ export const soldRoutes = async (app: FastifyInstance) => {
       city,
       state,
       done,
-    } = bodySchema.parse(request.body);
+    } = bodySchema.parse(request.body)
 
-    const sold = [];
+    const sold = []
 
     for (const productData of products) {
-      const { title, price, category, id } = productData;
+      const { title, price, category, id } = productData
 
       const sale = await prisma.sold.create({
         data: {
@@ -61,11 +61,11 @@ export const soldRoutes = async (app: FastifyInstance) => {
           category,
           productId: id,
         },
-      });
+      })
 
-      sold.push(sale);
+      sold.push(sale)
 
-      const soldId = sale.id;
+      const soldId = sale.id
 
       await prisma.order.create({
         data: {
@@ -81,7 +81,7 @@ export const soldRoutes = async (app: FastifyInstance) => {
           soldId,
           done,
         },
-      });
+      })
 
       await prisma.product.update({
         where: {
@@ -92,9 +92,9 @@ export const soldRoutes = async (app: FastifyInstance) => {
             decrement: 1,
           },
         },
-      });
+      })
     }
 
-    return sold;
-  });
-};
+    return sold
+  })
+}

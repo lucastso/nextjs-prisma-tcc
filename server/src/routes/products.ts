@@ -1,24 +1,24 @@
-import { FastifyInstance } from "fastify";
-import { prisma } from "../lib/prisma";
-import { z } from "zod";
+import { FastifyInstance } from 'fastify'
+import { prisma } from '../lib/prisma'
+import { z } from 'zod'
 
 export const productsRoutes = async (app: FastifyInstance) => {
-  app.get("/products", async () => {
+  app.get('/products', async () => {
     const products = await prisma.product.findMany({
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
-    });
+    })
 
-    return products;
-  });
+    return products
+  })
 
-  app.get("/products/search", async (request) => {
+  app.get('/products/search', async (request) => {
     const querySchema = z.object({
       q: z.string().optional(),
-    });
+    })
 
-    const { q } = querySchema.parse(request.query);
+    const { q } = querySchema.parse(request.query)
 
     const products = await prisma.product.findMany({
       where: {
@@ -36,30 +36,30 @@ export const productsRoutes = async (app: FastifyInstance) => {
         ],
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
-    });
+    })
 
-    return products;
-  });
+    return products
+  })
 
-  app.get("/products/:id", async (request) => {
+  app.get('/products/:id', async (request) => {
     const paramsSchema = z.object({
       id: z.string(),
-    });
+    })
 
-    const { id } = paramsSchema.parse(request.params);
+    const { id } = paramsSchema.parse(request.params)
 
     const products = await prisma.product.findUniqueOrThrow({
       where: {
         id,
       },
-    });
+    })
 
-    return products;
-  });
+    return products
+  })
 
-  app.post("/products", async (request) => {
+  app.post('/products', async (request) => {
     const bodySchema = z.object({
       title: z.string(),
       description: z.string(),
@@ -67,10 +67,10 @@ export const productsRoutes = async (app: FastifyInstance) => {
       image: z.string(),
       category: z.string(),
       stock: z.number(),
-    });
+    })
 
     const { title, description, price, image, category, stock } =
-      bodySchema.parse(request.body);
+      bodySchema.parse(request.body)
 
     const products = prisma.product.create({
       data: {
@@ -81,17 +81,17 @@ export const productsRoutes = async (app: FastifyInstance) => {
         category,
         stock,
       },
-    });
+    })
 
-    return products;
-  });
+    return products
+  })
 
-  app.put("/products/:id", async (request) => {
+  app.put('/products/:id', async (request) => {
     const paramsSchema = z.object({
       id: z.string(),
-    });
+    })
 
-    const { id } = paramsSchema.parse(request.params);
+    const { id } = paramsSchema.parse(request.params)
 
     const bodySchema = z.object({
       title: z.string(),
@@ -99,17 +99,17 @@ export const productsRoutes = async (app: FastifyInstance) => {
       image: z.string(),
       price: z.number(),
       stock: z.number(),
-    });
+    })
 
     const { title, description, image, price, stock } = bodySchema.parse(
-      request.body
-    );
+      request.body,
+    )
 
     let products = await prisma.product.findUniqueOrThrow({
       where: {
         id,
       },
-    });
+    })
 
     products = await prisma.product.update({
       where: {
@@ -122,30 +122,30 @@ export const productsRoutes = async (app: FastifyInstance) => {
         price,
         stock,
       },
-    });
+    })
 
-    return products;
-  });
+    return products
+  })
 
-  app.delete("/products/:id", async (request) => {
+  app.delete('/products/:id', async (request) => {
     const paramsSchema = z.object({
       id: z.string(),
-    });
+    })
 
-    const { id } = paramsSchema.parse(request.params);
+    const { id } = paramsSchema.parse(request.params)
 
     const products = await prisma.product.findUniqueOrThrow({
       where: {
         id,
       },
-    });
+    })
 
     await prisma.product.delete({
       where: {
         id,
       },
-    });
+    })
 
-    return products;
-  });
-};
+    return products
+  })
+}

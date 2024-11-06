@@ -13,15 +13,15 @@ const DealsComponent = ({ products }: ProductPropsList) => {
   }
 
   return (
-    <section className="grid grid-cols-4 gap-4">
-      <span className="col-span-4 mb-4 flex items-center gap-1 text-xl font-semibold">
+    <section className="grid gap-4 xs:grid-cols-1 lg:grid-cols-4">
+      <span className="mb-4 flex items-center gap-1 text-xl font-semibold xs:col-span-1 lg:col-span-4">
         Produtos novos <BadgePercent size={16} />
       </span>
       {products.slice(0, 4).map((product) => {
         return (
           <Link
             href={`/products/${product.id}`}
-            className="col-span-1 grid h-56 overflow-hidden rounded-md border border-zinc-300 bg-zinc-100 xs:grid-cols-1 lg:grid-cols-2"
+            className="col-span-1 grid overflow-hidden rounded-md border border-zinc-300 bg-zinc-100 xs:h-auto xs:grid-cols-1 lg:h-56 lg:grid-cols-2"
             key={product.id}
           >
             <div className="col-span-1 flex flex-col justify-between px-4 py-3">

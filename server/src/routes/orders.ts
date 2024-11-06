@@ -1,50 +1,50 @@
-import { FastifyInstance } from "fastify";
-import { prisma } from "../lib/prisma";
-import { z } from "zod";
+import { FastifyInstance } from 'fastify'
+import { prisma } from '../lib/prisma'
+import { z } from 'zod'
 
 export const ordersRoutes = async (app: FastifyInstance) => {
-  app.get("/orders", async () => {
+  app.get('/orders', async () => {
     const orders = await prisma.order.findMany({
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
       where: {
         done: {
           equals: false,
         },
       },
-    });
+    })
 
-    return orders;
-  });
+    return orders
+  })
 
-  app.get("/orders/:id", async (request) => {
+  app.get('/orders/:id', async (request) => {
     const paramsSchema = z.object({
       id: z.string(),
-    });
+    })
 
-    const { id } = paramsSchema.parse(request.params);
+    const { id } = paramsSchema.parse(request.params)
 
     const orders = await prisma.order.findMany({
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
       where: {
         buyerId: {
           equals: id,
         },
       },
-    });
+    })
 
-    return orders;
-  });
+    return orders
+  })
 
-  app.post("/order/:id", async (request) => {
+  app.post('/order/:id', async (request) => {
     const paramsSchema = z.object({
       id: z.string(),
-    });
+    })
 
-    const { id } = paramsSchema.parse(request.params);
+    const { id } = paramsSchema.parse(request.params)
 
     await prisma.order.update({
       where: {
@@ -55,6 +55,6 @@ export const ordersRoutes = async (app: FastifyInstance) => {
           set: true,
         },
       },
-    });
-  });
-};
+    })
+  })
+}

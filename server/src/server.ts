@@ -15,7 +15,7 @@ app.register(soldRoutes)
 app.register(ordersRoutes)
 
 app.get('/', (req, res) => {
-  res.send("Hello there!")
+  res.send('Hello there!')
 })
 
 app
@@ -31,5 +31,5 @@ app
    http://localhost:${PORT}
 
 ✨ Paracord Project ON! ✨
-`);
+`)
   })

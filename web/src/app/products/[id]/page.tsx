@@ -23,7 +23,7 @@ export default async function Product({ params: { id } }: Params) {
 
   return (
     <div className="font-outfit mx-auto mb-auto mt-8 space-y-12 overflow-x-hidden xs:w-full xs:px-6 lg:w-4/6 lg:px-0">
-      <div className="grid w-full grid-cols-6">
+      <div className="grid w-full xs:grid-cols-1 lg:grid-cols-6">
         <div className="col-span-4 flex items-center justify-center">
           <Image
             src={product.image}

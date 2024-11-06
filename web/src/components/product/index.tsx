@@ -34,10 +34,10 @@ const ProductComponent = ({
       </Link>
 
       <div className="flex flex-col items-start">
-        <div className="flex w-full items-start justify-between gap-2">
+        <div className="flex w-full items-start gap-2 xs:flex-col lg:flex-row lg:justify-between">
           <Link
             href={`/products/${id}`}
-            className="text-lg font-semibold"
+            className="font-semibold xs:text-base lg:text-lg"
             title={title}
           >
             {title}
@@ -47,7 +47,7 @@ const ProductComponent = ({
           </span>
         </div>
 
-        <span>
+        <span className="xs:text-xs lg:text-base">
           {description.length > 16
             ? description.slice(0, 44).concat('...')
             : description}

@@ -46,7 +46,10 @@ export default function Cart() {
           <div className="flex flex-col gap-8">
             {products.map((product) => {
               return (
-                <div key={product.id} className="flex h-40 w-full gap-8">
+                <div
+                  key={product.id}
+                  className="flex w-full gap-8 xs:h-auto xs:flex-col lg:h-40 lg:flex-row"
+                >
                   <Image
                     src={product.image}
                     alt=""
