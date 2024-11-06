@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import appLogo from '../../assets/logo.svg'
 import Link from 'next/link'
-import { Menu } from 'lucide-react'
 import NavbarSearch from '../navbar_search'
 import NavbarCart from '../navbar_cart'
 import { UserButton, auth, SignInButton } from '@clerk/nextjs'
