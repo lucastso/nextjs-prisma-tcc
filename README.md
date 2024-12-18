@@ -1,1 +1,1 @@
-Para rodar o projeto, primeiro você deve rodar o "npm i" nas pastas. Depois disso, será possível rodar "npm run start" na pasta server e "npm run dev" na pasta web.
+Para rodar o projeto, primeiro você deve rodar o "npm i" nas pastas. Depois disso, será possível rodar "npm run start" na pasta server e "npm run dev" na pasta web. Após, um link será disponibilizado no seu navegador, e você poderá acessar a plataforma.
